@@ -1,27 +1,28 @@
 package evaluation.entity;
 
+import java.util.Date;
+
 public class Student {
-	private int id;
 	private int studentid;
+	private String studentnumber;
 	private String password;
 	private String name;
+	private String sex;
+	private String tel;
 	private int power;
-	private int sex;
-	private int age;
-	private int courseid;
-	private int facultyid;
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	private Date birthday;
+	private int classid;
 	public int getStudentid() {
 		return studentid;
 	}
 	public void setStudentid(int studentid) {
 		this.studentid = studentid;
+	}
+	public String getStudentnumber() {
+		return studentnumber;
+	}
+	public void setStudentnumber(String studentnumber) {
+		this.studentnumber = studentnumber;
 	}
 	public String getPassword() {
 		return password;
@@ -35,35 +36,38 @@ public class Student {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
 	public int getPower() {
 		return power;
 	}
 	public void setPower(int power) {
 		this.power = power;
 	}
-	public int getSex() {
-		return sex;
+	public Date getBirthday() {
+		return birthday;
 	}
-	public void setSex(int sex) {
-		this.sex = sex;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
-	public int getAge() {
-		return age;
+	public int getClassid() {
+		return classid;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setClassid(int classid) {
+		this.classid = classid;
 	}
-	public int getCourseid() {
-		return courseid;
-	}
-	public void setCourseid(int courseid) {
-		this.courseid = courseid;
-	}
-	public int getFacultyid() {
-		return facultyid;
-	}
-	public void setFacultyid(int facultyid) {
-		this.facultyid = facultyid;
-	}
+	
+	
+	
 
 }

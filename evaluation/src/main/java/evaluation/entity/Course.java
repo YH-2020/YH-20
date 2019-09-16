@@ -1,22 +1,21 @@
 package evaluation.entity;
 
 public class Course {
-	private int id;
-	private String courseid;
+	private int courseid;
+	private String coursenumber;
 	private String coursename;
-	private int facultyid;
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getCourseid() {
+	private int majorid;
+	public int getCourseid() {
 		return courseid;
 	}
-	public void setCourseid(String courseid) {
+	public void setCourseid(int courseid) {
 		this.courseid = courseid;
+	}
+	public String getCoursenumber() {
+		return coursenumber;
+	}
+	public void setCoursenumber(String coursenumber) {
+		this.coursenumber = coursenumber;
 	}
 	public String getCoursename() {
 		return coursename;
@@ -24,12 +23,14 @@ public class Course {
 	public void setCoursename(String coursename) {
 		this.coursename = coursename;
 	}
-	public int getFacultyid() {
-		return facultyid;
+	public int getMajorid() {
+		return majorid;
 	}
-	public void setFacultyid(int facultyid) {
-		this.facultyid = facultyid;
+	public void setMajorid(int majorid) {
+		this.majorid = majorid;
 	}
+	
+	
 	
 
 }

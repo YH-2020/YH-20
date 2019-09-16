@@ -1,20 +1,20 @@
 package evaluation.entity;
 
 public class Faculty {
-	private int id;
-	private String facultyid;
+	private int facultyid;
+	private String facultynumber;
 	private String facultyname;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getFacultyid() {
+	public int getFacultyid() {
 		return facultyid;
 	}
-	public void setFacultyid(String facultyid) {
+	public void setFacultyid(int facultyid) {
 		this.facultyid = facultyid;
+	}
+	public String getFacultynumber() {
+		return facultynumber;
+	}
+	public void setFacultynumber(String facultynumber) {
+		this.facultynumber = facultynumber;
 	}
 	public String getFacultyname() {
 		return facultyname;
@@ -22,5 +22,5 @@ public class Faculty {
 	public void setFacultyname(String facultyname) {
 		this.facultyname = facultyname;
 	}
-
+	
 }

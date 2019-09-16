@@ -1,27 +1,29 @@
 package evaluation.entity;
 
+import java.util.Date;
+
 public class Teacher {
-	private int id;
 	private int teacherid;
+	private String teachernumber;
 	private String password;
 	private String name;
+	private String sex;
+	private String remarks;
+	private String phone;
 	private int power;
-	private int sex;
-	private int age;
-	private int phone;
-	private int facultyid;
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	private Date birthday;
+	private int majorid;
 	public int getTeacherid() {
 		return teacherid;
 	}
 	public void setTeacherid(int teacherid) {
 		this.teacherid = teacherid;
+	}
+	public String getTeachernumber() {
+		return teachernumber;
+	}
+	public void setTeachernumber(String teachernumber) {
+		this.teachernumber = teachernumber;
 	}
 	public String getPassword() {
 		return password;
@@ -35,35 +37,43 @@ public class Teacher {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getRemarks() {
+		return remarks;
+	}
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	public int getPower() {
 		return power;
 	}
 	public void setPower(int power) {
 		this.power = power;
 	}
-	public int getSex() {
-		return sex;
+	public Date getBirthday() {
+		return birthday;
 	}
-	public void setSex(int sex) {
-		this.sex = sex;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
-	public int getAge() {
-		return age;
+	public int getMajorid() {
+		return majorid;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setMajorid(int majorid) {
+		this.majorid = majorid;
 	}
-	public int getPhone() {
-		return phone;
-	}
-	public void setPhone(int phone) {
-		this.phone = phone;
-	}
-	public int getFacultyid() {
-		return facultyid;
-	}
-	public void setFacultyid(int facultyid) {
-		this.facultyid = facultyid;
-	}
+	
+	
 
 }
