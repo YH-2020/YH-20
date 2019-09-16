@@ -3,6 +3,12 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="evaluation.dao.ClasstbDao">
+      <select id="getClassById" parameterType="int" resultType="evaluation.entity.Classtb">
+      	 select * from classtb where classid=#{classid}
+      </select>
       
+      <insert id="addClass" parameterType="evaluation.entity.Classtb">
+      	insert into classtb(classid,classnumber,classname) values (#{classid},#{classnumber},#{classname});
+      </insert>
             
 </mapper>

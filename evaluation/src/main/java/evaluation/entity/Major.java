@@ -4,6 +4,8 @@ public class Major {
 	private int majorid;
 	private String majornumber;
 	private String majorname;
+	private int facultyid;
+	
 	public int getMajorid() {
 		return majorid;
 	}
@@ -21,6 +23,12 @@ public class Major {
 	}
 	public void setMajorname(String majorname) {
 		this.majorname = majorname;
+	}
+	public int getFacultyid() {
+		return facultyid;
+	}
+	public void setFacultyid(int facultyid) {
+		this.facultyid = facultyid;
 	}
 	
 
