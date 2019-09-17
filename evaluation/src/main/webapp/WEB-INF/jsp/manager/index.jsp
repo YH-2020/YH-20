@@ -71,69 +71,51 @@
                 <ul id="nav">
                     <li>
                         <a href="javascript:;">
-                            <i class="iconfont left-nav-li" lay-tips="教师管理">&#xe6b8;</i>
-                            <cite>教师管理</cite>
+                            <i class="iconfont left-nav-li" lay-tips="用户管理">&#xe6b8;</i>
+                            <cite>用户管理</cite>
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
                                 <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>教师列表</cite></a>
-                            </li>   
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont left-nav-li" lay-tips="学生管理">&#xe6b8;</i>
-                            <cite>学生管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i></a>
-                        <ul class="sub-menu">
-                            <li>
+                                    <cite>教师管理</cite></a>
+                            </li> 
+                             <li>
                                 <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>学生列表</cite></a>
+                                    <cite>学生管理</cite></a>
                             </li>   
                         </ul>
                     </li>
+                    
                     <li>
                         <a href="javascript:;">
-                            <i class="iconfont left-nav-li" lay-tips="课程管理">&#xe6b8;</i>
-                            <cite>课程管理</cite>
+                            <i class="iconfont left-nav-li" lay-tips="教学管理">&#xe6b8;</i>
+                            <cite>教学管理</cite>
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
+                        	<li>
+                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>院系列表</cite></a>
+                            </li>
+                        	<li>
+                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>专业列表</cite></a>
+                            </li>
                             <li>
                                 <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>课程列表</cite></a>
-                            </li>   
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont left-nav-li" lay-tips="专业管理">&#xe6b8;</i>
-                            <cite>专业管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i></a>
-                        <ul class="sub-menu">
+                            </li>
                             <li>
                                 <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>专业列表</cite></a>
+                                    <cite>授课列表</cite></a>
                             </li>   
                         </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont left-nav-li" lay-tips="院系管理">&#xe6b8;</i>
-                            <cite>院系管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i></a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>院系列表</cite></a>
-                            </li>   
-                        </ul>
-                    </li>
+                    </li>                                 
                     <li>
                         <a href="javascript:;">
                             <i class="iconfont left-nav-li" lay-tips="得分管理">&#xe6b8;</i>
@@ -146,20 +128,7 @@
                                     <cite>得分表</cite></a>
                             </li>   
                         </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont left-nav-li" lay-tips="授课管理">&#xe6b8;</i>
-                            <cite>授课管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i></a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>授课列表</cite></a>
-                            </li>   
-                        </ul>
-                    </li>
+                    </li>                    
                     <li>
                         <a href="javascript:;">
                             <i class="iconfont left-nav-li" lay-tips="权限管理">&#xe6b8;</i>
