@@ -24,7 +24,7 @@
     		 location.href="${pageContext.request.contextPath}/student/studentedit?studentid="+studentid;
     	alert(studentid)
         }
-        
+        $("#studentid").hide();
         
         </script>
     </head>
@@ -71,6 +71,7 @@
                                     <th>
                                       <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
                                     </th>
+                                   <!--  <th>ID</th> -->
                                     <th>学号</th>
                                     <th>姓名</th>
                                     <th>性别</th>
@@ -87,7 +88,7 @@
 										<td><input type="checkbox" name="" lay-skin="primary" >
 										</td>
 										
-										<td> ${item.studentid}</td>
+										<%-- <td id="studentid">${item.studentid}</td> --%>
 										<td>${item.studentnumber}</td>
 										<td>${item.name}</td>
 										<td>${item.sex}</td>
@@ -257,7 +258,10 @@
         });
        
          var aa=ids.toString();
-         alert(typeof ids);
+       
+         alert(typeof aa);
+         
+         
          layer.confirm('确认要删除吗？'+aa,function(index){
             //捉到所有被选中的，发异步进行删除
            

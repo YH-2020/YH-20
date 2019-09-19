@@ -29,8 +29,8 @@ public class StudentService {
 		public int studentdel(int studentid) {
 			return studentDao.studentdel(studentid);
 		}
-		public int studentall(String aa){
+		public int studentall(String[] aa1){
 			
-			return studentDao.studentall(aa);
+			return studentDao.studentall(aa1);
 		}
 	}

@@ -74,8 +74,9 @@ public class StudentController {
 	@RequestMapping("studentall")
 	@ResponseBody
 	public ResultMsg studentall(String aa) {
-		//更新雇员
-		int i=getStus.studentall(aa);
+		
+		String[] aa1=aa.split(",");
+		int i=getStus.studentall(aa1);
 		System.out.println(aa);
 		System.out.println(aa.length());
 		if (i > 0) {

@@ -44,7 +44,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  </delete>
 	  
 	  <delete id="studentall" parameterType="String">
-	   delete from student where studentnumber in(#{aa})
+	   delete from student where studentnumber in
+	   <foreach collection="array" item="aa1" open="(" separator="," close=")">
+	   #{aa1}
+	   </foreach>
+	   
+	  
 	  
 	  </delete>
 </mapper>
