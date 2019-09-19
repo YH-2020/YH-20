@@ -3,9 +3,8 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="evaluation.dao.TeacherDao">
-      <select id="getTeacher" parameterType="int" resultType="evaluation.entity.Teacher">
-		select * from teacher
-		where teacherid=#{teacherid}
+      <select id="getTeacher" parameterType="evaluation.entity.Teacher" resultType="evaluation.entity.Teacher">
+		select * from teacher where teachernumber=#{teachernumber} and password=#{password}
       </select>
             
 </mapper>
