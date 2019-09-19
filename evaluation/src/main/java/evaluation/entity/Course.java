@@ -5,6 +5,13 @@ public class Course {
 	private String coursenumber;
 	private String coursename;
 	private int majorid;
+	private Major major;
+	public Major getMajor() {
+		return major;
+	}
+	public void setMajor(Major major) {
+		this.major = major;
+	}
 	public int getCourseid() {
 		return courseid;
 	}

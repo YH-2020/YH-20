@@ -9,11 +9,28 @@ import evaluation.dao.StudentDao;
 import evaluation.entity.Student;
 
 
+
 @Service
 public class StudentService {
 	 @Autowired
-	 private StudentDao studentDao;		
+	 private StudentDao studentDao;	
+	 
 		public List<Student> getStus(){
 			return studentDao.getStus();
 		}	
+		
+		public Student getStudentBystuid(int studentid) {
+			return studentDao.getStudentBystuid(studentid);
+			
+		}
+		public int updateStudent(Student student) {
+			return studentDao.updateStudent( student);
+		}
+		public int studentdel(int studentid) {
+			return studentDao.studentdel(studentid);
+		}
+		public int studentall(String[] aa1){
+			
+			return studentDao.studentall(aa1);
+		}
 	}
