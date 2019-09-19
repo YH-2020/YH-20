@@ -11,7 +11,6 @@
         <meta http-equiv="Cache-Control" content="no-siteapp" />
         <link rel="stylesheet" href="../X-admin/css/font.css">
         <link rel="stylesheet" href="../X-admin/css/xadmin.css">
-        <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
         <script src="../X-admin/lib/layui/layui.js" charset="utf-8"></script>
         <script type="text/javascript" src="../X-admin/js/xadmin.js"></script>
     </head>
@@ -54,13 +53,13 @@
                         <dd>
                             <a onclick="xadmin.open('个人信息','http://www.baidu.com')">个人信息</a></dd>
                         <dd>
-                            <a onclick="xadmin.open('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
+                            <a onclick="xadmin.open('login')">切换帐号</a></dd>
                         <dd>
                             <a href="login">退出</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item to-index">
-                    <a href="/">前台首页</a></li>
+                    <a href="index">前台首页</a></li>
             </ul>
         </div>
         <!-- 顶部结束 -->
@@ -76,12 +75,12 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('教师页面','${pageContext.request.contextPath}/teacher/teacher-list')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>教师管理</cite></a>
                             </li> 
                              <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('学生页面','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>学生管理</cite></a>
                             </li>   
@@ -95,22 +94,22 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                         	<li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('院系页面','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>院系列表</cite></a>
                             </li>
                         	<li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('专业页面','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>专业列表</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('课程页面','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>课程列表</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('授课页面','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>授课列表</cite></a>
                             </li>   
@@ -123,7 +122,7 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('得分表','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>得分表</cite></a>
                             </li>   
@@ -136,7 +135,7 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('权限列表','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>权限列表</cite></a>
                             </li>   
@@ -149,32 +148,32 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('学生信息','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>学生信息导入</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('教师信息','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>教师信息导入</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('课程信息','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>课程信息导入</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('专业信息','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>专业信息导入</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('院系信息','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>院系信息导入</cite></a>
                             </li> 
                             <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('授课信息','welcome1.html')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>授课信息导入</cite></a>
                             </li>  
