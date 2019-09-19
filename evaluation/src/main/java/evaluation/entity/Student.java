@@ -2,6 +2,8 @@ package evaluation.entity;
 
 import java.util.Date;
 
+
+
 public class Student {
 	private int studentid;
 	private String studentnumber;
@@ -12,6 +14,15 @@ public class Student {
 	private int power;
 	private Date birthday;
 	private int classid;
+	private Classtb cla;
+	
+	
+	public Classtb getCla() {
+		return cla;
+	}
+	public void setCla(Classtb cla) {
+		this.cla = cla;
+	}
 	public int getStudentid() {
 		return studentid;
 	}
