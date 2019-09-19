@@ -37,18 +37,18 @@ public class ManagerController {
 	@Autowired
 	private TeacherService teacherService;
 	
-	/*@RequestMapping("/index")
->>>>>>> branch 'master' of https://github.com/HK169000708/test.git
+	@RequestMapping("/index")
+
 	 public ModelAndView index() {
 		 ModelAndView mv=new ModelAndView("manager/index");
 		 return mv;
-	 }*/
+	 }
 	
-	/*@RequestMapping("/welcome")
+	@RequestMapping("/welcome")
 	 public ModelAndView welcome() {
 		 ModelAndView mv=new ModelAndView("manager/welcome");
 		 return mv;
-	 }*/
+	 }
 	@RequestMapping("/login")
 	 public ModelAndView login() {
 		 ModelAndView mv=new ModelAndView("manager/login");

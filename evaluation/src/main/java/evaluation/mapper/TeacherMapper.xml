@@ -10,8 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       </select>
       
       <select id="getTeacherByid" parameterType="int" resultType="evaluation.entity.Teacher">
-
-     
+       select * from teacher where taecherid=#{teacherid};
+     </select>
       
       <select id="getCount" resultType="int">
 		select count(1) from teacher 
