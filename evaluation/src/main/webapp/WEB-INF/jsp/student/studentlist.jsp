@@ -24,7 +24,7 @@
     		 location.href="${pageContext.request.contextPath}/student/studentedit?studentid="+studentid;
     	alert(studentid)
         }
-        $("#studentid").hide();
+        
         
         </script>
     </head>

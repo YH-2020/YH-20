@@ -17,6 +17,10 @@ public interface FacultyDao {
 	int isFaculty(int facultyid);
 	Faculty getFacultybyId(int facultyid);
 	int isFacultybyname(String facultyname);
-	int delchecked(String[] aa);
+
+	int delchecked(String[] ids1);
+
+
+
 
 }

@@ -15,7 +15,7 @@ import evaluation.service.FacultyService;
 import evaluation.service.MajorService;
 
 @Controller
-@RequestMapping("/manager")
+@RequestMapping("/major")
 public class MajorController {
 	@Autowired
 	private MajorService majorService;
@@ -24,7 +24,7 @@ public class MajorController {
 	@RequestMapping("/majorlist")
 	public ModelAndView majorlist() {
 		List<Major> majors=majorService.getMajor();
-		ModelAndView mView=new ModelAndView("manager/majorlist");
+		ModelAndView mView=new ModelAndView("major/majorlist");
 		mView.addObject("majors", majors);
 		return mView;
 	}
@@ -41,7 +41,7 @@ public class MajorController {
 	@RequestMapping("/addmajor")
 	public ModelAndView addmajor() {
 		List<Faculty> faculty=facultyService.getFaculty();
-		ModelAndView mView =new ModelAndView("manager/addmajor");
+		ModelAndView mView =new ModelAndView("major/addmajor");
 		mView.addObject("faculty", faculty);
 		return mView;
 	}
@@ -66,7 +66,7 @@ public class MajorController {
 	public ModelAndView updatemajor(int majorid) {
 		Major major=majorService.getMajorById(majorid);
 		List<Faculty> faculty=facultyService.getFaculty();
-		ModelAndView mView =new ModelAndView("manager/updatemajor");
+		ModelAndView mView =new ModelAndView("major/updatemajor");
 		mView.addObject("major", major);
 		mView.addObject("faculty",faculty);
 		return mView;

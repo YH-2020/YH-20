@@ -51,7 +51,7 @@
                         </div>
                         <div class="layui-card-header">
                             <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                            <button class="layui-btn" onclick="xadmin.open('添加用户','${pageContext.request.contextPath}/manager/addmajor',600,400)"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn" onclick="xadmin.open('添加用户','${pageContext.request.contextPath}/major/addmajor',600,400)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body layui-table-body layui-table-main">
                             <table class="layui-table layui-form">
@@ -65,7 +65,7 @@
                                     <th>专业名称</th>
                                     <th>院系</th>
                                     
-                                    <th>状态</th>
+                                   
                                     <th>操作</th></tr>
                                 </thead>
                                 <tbody>
@@ -79,18 +79,13 @@
                                     <td> ${item.majorname}</td>
                                     <td> ${item.faculty.facultyname}</td>
                                    
-                                    <td class="td-status">
-                                      <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+                                    
                                     <td class="td-manage">
-                                      <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
-                                        <i class="layui-icon">&#xe601;</i>
-                                      </a>
-                                      <a title="编辑" href="javascript:;" onclick="xadmin.open('编辑','${pageContext.request.contextPath}/manager/updatemajor?majorid=${item.majorid }',600,400)" >
+                                      
+                                      <a title="编辑" href="javascript:;" onclick="xadmin.open('编辑','${pageContext.request.contextPath}/major/updatemajor?majorid=${item.majorid }',600,400)" >
                                         <i class="layui-icon">&#xe642;</i>
                                       </a>
-                                      <a onclick="xadmin.open('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
-                                        <i class="layui-icon">&#xe631;</i>
-                                      </a>
+                                      
                                       <a title="删除" onclick="member_del(this,'${item.majorid}')" href="javascript:;">
                                         <i class="layui-icon">&#xe640;</i>
                                       </a>
@@ -178,7 +173,7 @@
               $(obj).parents("tr").remove();
               layer.msg('已删除!',{icon:1,time:1000});
           });
-          var url="${pageContext.request.contextPath}/manager/delmajor";
+          var url="${pageContext.request.contextPath}/major/delmajor";
           var majorid=id;
           var param={majorid:majorid};
           $.post(url,param,function(data){

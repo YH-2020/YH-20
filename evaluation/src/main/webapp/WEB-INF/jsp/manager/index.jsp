@@ -101,7 +101,7 @@
                                     <cite>院系列表</cite></a>
                             </li>
                         	<li>
-                                <a onclick="xadmin.add_tab('专业列表','${pageContext.request.contextPath}/manager/majorlist')">
+                                <a onclick="xadmin.add_tab('专业列表','${pageContext.request.contextPath}/major/majorlist')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>专业列表</cite></a>
                             </li>
