@@ -20,17 +20,18 @@
             <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
         <![endif]--></head>
     <script type="text/javascript">
-    function update(){
+   /*  function update(){
     	var url="${pageContext.request.contextPath}/student/updatestucontroll";
     	var param=$("#updatestu").serialize();//序列化表单
     	$.post(url,param,function(data){
     		alert(data.content);
     		if(data.flag==1){
+    			layer.closeAll();
     			location.href="${pageContext.request.contextPath}/Student/studentlist";
     		}
     				
     	})
-    }
+    } */
     
     </script>
     <body>
@@ -60,7 +61,7 @@
                     
                     <div class="layui-form-item">
                         <label for="L_repass" class="layui-form-label"></label>
-                        <button class="layui-btn" lay-filter="add" lay-submit="" onclick="update()">修改</button></div>
+                        <button class="layui-btn" lay-filter="update" lay-submit="" >修改</button></div>
                 </form>
             </div>
         </div>
@@ -69,46 +70,53 @@
                 $ = layui.jquery;
                 var form = layui.form,
                 layer = layui.layer;
-
-                //自定义验证规则
-              /*   form.verify({
-                    nikename: function(value) {
-                        if (value.length < 5) {
-                            return '昵称至少得5个字符啊';
-                        }
-                    },
-                    pass: [/(.+){6,12}$/, '密码必须6到12位'],
-                    repass: function(value) {
-                        if ($('#L_pass').val() != $('#L_repass').val()) {
-                            return '两次密码不一致';
-                        }
-                    }
-                }); */
-
+                
                 //监听提交
-              /*   form.on('submit(add)',
+                form.on('submit(update)',
                 function(data) {
-                    console.log(data);
-                    //发异步，把数据提交给php
-                    layer.alert("增加成功", {
-                        icon: 6
-                    },
-                    function() {
-                        // 获得frame索引
-                        var index = parent.layer.getFrameIndex(window.name);
-                        //关闭当前frame
-                        parent.layer.close(index);
-                    });
-                    return false;
-                }); */
+                	 $.ajax({                	  
+                     	type:"post",
+                     	url:"${pageContext.request.contextPath}/student/updatestucontroll",
+                     	data:data.field,
+                     	success:function(data){
+                     		if(data.flag == 1){
+                     			layer.alert("修改成功", {
+                                     icon: 1
+                                 }, function() {
+                                     //关闭当前frame
+                                     xadmin.close();
 
-            });</script>
+                                      // 可以对父窗口进行刷新 
+                                     xadmin.father_reload(); 
+                                 });
+                     		}else{
+                     			layer.alert("修改失败", {
+                                     icon: 2
+                                 }, function() {
+                                     //关闭当前frame
+                                     xadmin.close();
+
+                                     // 可以对父窗口进行刷新 
+                                     xadmin.father_reload();
+                                 });
+                     		}
+                     	}
+                     })
+               
+                	return false;		
+                }); 
+                
+                
+
+            });
+        </script>
         <script>var _hmt = _hmt || []; (function() {
                 var hm = document.createElement("script");
                 hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
                 var s = document.getElementsByTagName("script")[0];
                 s.parentNode.insertBefore(hm, s);
-            })();</script>
+            })();
+        </script>
     </body>
 
 </html>

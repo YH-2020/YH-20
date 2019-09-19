@@ -20,11 +20,11 @@
         
         <script type="text/javascript">
         
-        function update(studentid){
+       /*  function update(studentid){
     		 location.href="${pageContext.request.contextPath}/student/studentedit?studentid="+studentid;
     	alert(studentid)
-        }
-        $("#studentid").hide();
+        } */
+       
         
         </script>
     </head>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="layui-card-header">
                             <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                            <button class="layui-btn" onclick="xadmin.open('添加用户','./member-add.html',600,400)"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn" onclick="xadmin.open('添加用户','${pageContext.request.contextPath}/student/studentadd',600,400)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body layui-table-body layui-table-main">
                             <table class="layui-table layui-form">
@@ -80,6 +80,7 @@
                                     <th>年龄</th>
                                     <th>时间</th>
                                     <th>操作</th>
+                                   
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -118,10 +119,16 @@
 										</td>
 
 										<td class="td-manage">
+											<%-- <button class="layui-btn layui-btn layui-btn-xs"
+												onclick="update('${item.studentid}')" href="#"> --%>
+												
 											<button class="layui-btn layui-btn layui-btn-xs"
-												onclick="update('${item.studentid}') " href="#">
-												<i class="layui-icon">&#xe642;</i>编辑
+												onclick="xadmin.open('编辑用户','${pageContext.request.contextPath}/student/studentedit?studentid=${item.studentid}',600,400 )"
+												href="javascript:;">
+										        <i class="layui-icon">&#xe642;</i>编辑
 											</button>
+											
+											
 											<button class="layui-btn-danger layui-btn layui-btn-xs"
 												onclick="member_del(this,'${item.studentid}')" href="javascript:;">
 												<i class="layui-icon">&#xe640;</i>删除
@@ -206,13 +213,6 @@
       /*用户-删除*/
       function member_del(obj,studentid){
           layer.confirm('确认要删除吗？',function(index){
-        	  
-        	  
-              //发异步删除数据
-              /* alert(studentid);
-              location.href="${pageContext.request.contextPath}/student/studentdel?studentid="+studentid;
-    	       */
-    	       
     	        var url="${pageContext.request.contextPath}/student/studentdel?studentid="+studentid;
         	   	$.post(url,function(data){
     	   		if(data.flag==1){
@@ -220,26 +220,8 @@
     	   			location.reload();
     	   			
     				}
-    	   		
-    	   				
-    	   	})
+   	   	})
     	   	
-        			/* $.ajax({
-        			type:"post",
-        			url:"${pageContext.request.contextPath}/student/studentdel?studentid="+studentid,
-        			dataType:"json",
-        			success:function(obj){	
-        				
-        		    alert("ok");
-        				
-        			},
-        			error:function(batde){
-        				alert("error");
-        			}
-        			
-        			}) */
-        		
-              /* layer.msg('已删除!',{icon:1,time:1000}); */
           });
       }
 
@@ -258,10 +240,6 @@
         });
        
          var aa=ids.toString();
-       
-         alert(typeof aa);
-         
-         
          layer.confirm('确认要删除吗？'+aa,function(index){
             //捉到所有被选中的，发异步进行删除
            
