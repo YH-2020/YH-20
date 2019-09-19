@@ -3,32 +3,9 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="evaluation.dao.TeacherDao">
-<<<<<<< HEAD
+
       <select id="getTeacher" parameterType="evaluation.entity.Teacher" resultType="evaluation.entity.Teacher">
 		select * from teacher where teachernumber=#{teachernumber} and password=#{password}
-=======
+      </select>   
 
-      <!-- <select id="TeacherLogin"  resultType="evaluation.entity.Teacher">
-		select * from teacher
-		where teachernumber=#{teachernumber} and password=#{password}
->>>>>>> branch 'master' of https://github.com/HK169000708/test.git
-      </select>
-
-      <select id="getAllTeacher"  resultType="evaluation.entity.Teacher">
-		select * from teacher
-      </select> 
-      
-      <insert id="addTeacher"  resultType="evaluation.entity.Teacher">
-		insert into
-		teacher(name,teachernumber,sex,password,phone,power,majorid,remarks,birthday) values (#{username},#{teachernumber},#{sex},#{password},#{phone},#{power},#{majorid},#{remarks},#{birthday})
-      </insert> 
-      
-      <update id="updateTeacher"  resultType="evaluation.entity.Teacher">
-		update teacher set  name=#{rname},teachernumber=#{teachernumber},sex=#{sex},password=#{password},phone=#{phone},power=#{power},majorid=#{majorid},remarks=#{remarks},birthday=#{birthday}
-      </update> 
-      
-      <delete id="delTeacher" parameterType="String">
-        delete from student where teachernumber=#{teachernumber}
-      
-      </delete> -->
 </mapper>

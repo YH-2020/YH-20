@@ -2,7 +2,7 @@ package evaluation.controller;
 
 import java.util.List;
 
-import org.aspectj.weaver.ast.Var;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +28,7 @@ public class FacultyController {
 	 }
 	 
 	 @RequestMapping("/addfaculty")
-	 public ModelAndView addmatch() {
+	 public ModelAndView addfaculty() {
 	 	 ModelAndView mv=new ModelAndView("faculty/addfaculty");
 	 	 return mv;
 	  }
@@ -63,6 +63,7 @@ public class FacultyController {
 	 @RequestMapping("/delchecked")
 	 @ResponseBody
 	 public Result delchecked(String aa) {
+		 System.out.println(aa);
 		 String[] ids1=aa.split(",");
 		   int i=facultyService.delchecked(ids1);
 		   System.out.println(i);

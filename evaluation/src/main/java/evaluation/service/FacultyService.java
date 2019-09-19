@@ -25,8 +25,8 @@ public class FacultyService {
 		return facultyDao.delFaculty(facultyid);
 	}
 	
-	public int delchecked(String[] aa) {
-		return facultyDao.delchecked(aa);
+	public int delchecked(String[] ids1) {
+		return facultyDao.delchecked(ids1);
 	}
 	
 	public int updateFaculty(Faculty faculty){

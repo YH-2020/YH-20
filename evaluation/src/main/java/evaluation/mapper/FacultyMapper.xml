@@ -34,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
  <delete id="delchecked" parameterType="list">
 	delete from faculty where facultyid in 
-	<foreach collection="list" item="ids1" open="(" close=")" separator=",">
+	<foreach collection="array" item="ids1" open="(" close=")" separator=",">
 	#{ids1}
     </foreach>
 </delete> 

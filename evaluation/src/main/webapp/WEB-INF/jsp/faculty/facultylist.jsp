@@ -152,34 +152,40 @@ function del(facultyid){
      
      
       function delAll (argument) {
-          var ids = [];
+          var ids = []; 
+
           // 获取选中的id 
           $('tbody input').each(function(index, el) {
-        	  var facultyid=$(this).parent().next();
+          	var facultyid=$(this).parent().next();
               if($(this).prop('checked')){
-                 ids.push(facultyid.html());
-              }
+              	
+                 ids.push(facultyid.html())
+              } 
           });
+         
            var aa=ids.toString();
-          layer.confirm('确认要删除吗？'+aa,function(index){
+         
+           alert(typeof aa);
+           
+           
+           layer.confirm('确认要删除吗？'+aa,function(index){
               //捉到所有被选中的，发异步进行删除
-              layer.msg('删除成功', {icon: 1});
-             $.ajax({
-            	 type:post,
-            	 url:"${pageContext.request.contextPath}/faculty/delchecked",
-            	 data:{"aa":aa},
-            	 success:function(data){
-            		 if(data.flag == 1){
-               			layer.alert("删除成功", {
-                               icon: 1
-                           },function(){
-                           	xadmin.father_reload();
-                           });
-               		}else{alert("删除失败")} 
-            	 }
-             })
-            	 
              
+              $.ajax({
+            	  type:"post",
+              	  url:"${pageContext.request.contextPath}/faculty/delchecked", 
+              	  data:{"aa":aa},
+              	  success:function(data){
+            		if(data.flag == 1){
+            			layer.alert("删除成功", {
+                            icon: 1
+                        },function(){
+                        	location.reload();
+                        });
+            		}else{alert("删除失败")}
+            	}            	  
+              })
+              
           });
         }
 
