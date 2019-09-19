@@ -21,4 +21,7 @@ public interface TeacherDao {
 	
 	int updateTeacher(Teacher teacher);
 
+	Teacher getTeacher(Teacher teacher);
+
+
 }

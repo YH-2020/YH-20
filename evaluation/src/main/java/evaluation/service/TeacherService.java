@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import evaluation.dao.TeacherDao;
 import evaluation.entity.Teacher;
+
 import evaluation.util.Page;
+
 
 @Service
 public class TeacherService {
@@ -51,5 +53,18 @@ public class TeacherService {
         List<Teacher> teachers=teacherDao.getTeachers(page);
         page.setDataList(teachers);
     }
+
+	public boolean login(String teachernumber,String password) {
+		Teacher teacher=new Teacher();
+		teacher.setTeachernumber(teachernumber);
+		teacher.setPassword(password);
+		Teacher t=teacherDao.getTeacher(teacher);
+		if(t!=null){
+			return true;
+		}
+		return false;
+		}
+		
+
 }
 

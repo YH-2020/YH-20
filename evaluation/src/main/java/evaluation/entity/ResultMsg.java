@@ -1,23 +1,24 @@
 package evaluation.entity;
 
 public class ResultMsg {
-	private int flage;
-	private String content;
-	public int getFlage() {
-		return flage;
-	}
-	public void setFlage(int flage) {
-		this.flage = flage;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	
-	public ResultMsg ( int flage,String content) {
-		this.flage=flage;
-		this.content=content;
-	}
+
+private int flag;//标识
+private String content;//内容
+public ResultMsg (int flag,String content) {
+	this.flag=flag;
+	this.content=content;
+}
+public int getFlag() {
+	return flag;
+}
+public void setFlag(int flag) {
+	this.flag = flag;
+}
+public String getContent() {
+	return content;
+}
+public void setContent(String content) {
+	this.content = content;
+}
+
 }

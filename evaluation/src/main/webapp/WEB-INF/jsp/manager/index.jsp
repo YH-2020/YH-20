@@ -13,9 +13,10 @@
         <link rel="stylesheet" href="../X-admin/css/xadmin.css">
         <script src="../X-admin/lib/layui/layui.js" charset="utf-8"></script>
         <script type="text/javascript" src="../X-admin/js/xadmin.js"></script>
+        <script type="text/javascript" src="../lib/jquery-3.4.0.min.js"></script>
     </head>
     <body class="index">
-        <!-- 顶部开始 -->
+       <!-- 顶部开始 -->
         <div class="container">
             <div class="logo">
                 <a href="./index.html">教师综合评价系统</a></div>
@@ -80,7 +81,8 @@
                                     <cite>教师管理</cite></a>
                             </li> 
                              <li>
-                                <a onclick="xadmin.add_tab('学生页面','welcome1.html')">
+                                
+                                <a onclick="xadmin.add_tab('学生列表','${pageContext.request.contextPath}/student/studentlist')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>学生管理</cite></a>
                             </li>   
@@ -94,17 +96,17 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                         	<li>
-                                <a onclick="xadmin.add_tab('院系页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('院系列表','${pageContext.request.contextPath}/faculty/facultylist')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>院系列表</cite></a>
                             </li>
                         	<li>
-                                <a onclick="xadmin.add_tab('专业页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('专业列表','${pageContext.request.contextPath}/manager/majorlist')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>专业列表</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('课程页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('课程列表','${pageContext.request.contextPath}/course/course-list')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>课程列表</cite></a>
                             </li>
