@@ -1,6 +1,7 @@
 package evaluation.entity;
 
 public class ResultMsg {
+
 private int flag;//标识
 private String content;//内容
 public ResultMsg (int flag,String content) {

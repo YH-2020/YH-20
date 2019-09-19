@@ -3,6 +3,14 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="evaluation.dao.ScoreDao">
-      
-            
+      <select id="getScoreById" parameterType="int" resultType="evaluation.entity.Score">
+      select * from score where scoreid=#{scoreid};
+      </select>
+      <delete id="deleteScore" parameterType="int">
+      delete from score where scoreid=#{scoreid};
+      </delete>
+      <insert id="insertScore" parameterType="evaluation.entity.Score">
+      insert into score(scoreid,studentid,teacherid,teachingid,question0,question1,question2,question3,question4,question5,question6,question7,question8,question9)
+      values(#{scoreid},#{studentid},#{teacherid},#{teachingid},#{question0},#{question1},#{question2},#{question3},#{question4},#{question5},#{question6},#{question7},#{question8},#{question9});
+      </insert>      
 </mapper>

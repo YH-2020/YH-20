@@ -1,6 +1,7 @@
 package evaluation.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import evaluation.dao.FacultyDao;
@@ -11,6 +12,10 @@ import evaluation.entity.Faculty;
 public class FacultyService {
 	@Autowired
 	private FacultyDao facultyDao;
+
+	
+
+
 	
 	public int insertFaculty(Faculty faculty) {
 		int cnt=facultyDao.isFacultybyname(faculty.getFacultyname());
@@ -47,4 +52,5 @@ public class FacultyService {
 	}
 	
 	
+
 }

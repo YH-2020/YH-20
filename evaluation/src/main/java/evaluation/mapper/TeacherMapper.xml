@@ -4,8 +4,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="evaluation.dao.TeacherDao">
 
+
       <select id="getTeacher" parameterType="evaluation.entity.Teacher" resultType="evaluation.entity.Teacher">
 		select * from teacher where teachernumber=#{teachernumber} and password=#{password}
       </select>   
+
+	  <select id="getTeachers" parameterType="evaluation.util.Page" resultType="evaluation.entity.Teacher">
+		select * from teacher order by teacherid asc limit #{pageIndex},#{pageSize}
+      </select>
+      
+      <select id="getTeacherByid" parameterType="int" resultType="evaluation.entity.Teacher">
+		select * from teacher where teacherid = #{teacherid}
+     </select>
+      
+      <select id="getCount" resultType="int">
+		select count(1) from teacher 
+	  </select>
+	  
+      <select id="getTeacherByNum" parameterType="String" resultType="int">
+		select count(1) from teacher where teachernumber=#{teachernumber}
+	  </select>
+      
+      <insert id="addTeacher" parameterType="evaluation.entity.Teacher">
+      	insert into teacher(name,teachernumber,sex,password,power,majorid) 
+      	values (#{name},#{teachernumber},#{sex},#{password},#{power},#{majorid});
+      </insert>      
+      
+      <delete id="delTeacher" parameterType="String">
+		delete from teacher where teachernumber=#{teachernumber}
+	  </delete>
+	  
+      <update id="updateTeacher" parameterType="evaluation.entity.Teacher">
+		update teacher
+		set name=#{name},teachernumber=#{teachernumber},sex=#{sex},password=#{password},
+		power=#{power},majorid=#{majorid} where teacherid=#{teacherid}
+	  </update>
+     
 
 </mapper>

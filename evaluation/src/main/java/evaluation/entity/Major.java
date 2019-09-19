@@ -6,6 +6,12 @@ public class Major {
 	private String majorname;
 	private int facultyid;
 	
+	public int getFacultyid() {
+		return facultyid;
+	}
+	public void setFacultyid(int facultyid) {
+		this.facultyid = facultyid;
+	}
 	public int getMajorid() {
 		return majorid;
 	}
@@ -24,12 +30,16 @@ public class Major {
 	public void setMajorname(String majorname) {
 		this.majorname = majorname;
 	}
-	public int getFacultyid() {
-		return facultyid;
+	
+	private Faculty faculty;
+
+	public Faculty getFaculty() {
+		return faculty;
 	}
-	public void setFacultyid(int facultyid) {
-		this.facultyid = facultyid;
+	public void setFaculty(Faculty faculty) {
+		this.faculty = faculty;
 	}
+	
 	
 
 }
