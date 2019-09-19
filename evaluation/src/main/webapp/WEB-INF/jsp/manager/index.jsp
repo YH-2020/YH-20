@@ -14,9 +14,10 @@
         <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
         <script src="../X-admin/lib/layui/layui.js" charset="utf-8"></script>
         <script type="text/javascript" src="../X-admin/js/xadmin.js"></script>
+        <script type="text/javascript" src="../lib/jquery-3.4.0.min.js"></script>
     </head>
     <body class="index">
-        <!-- 顶部开始 -->
+       <!-- 顶部开始 -->
         <div class="container">
             <div class="logo">
                 <a href="./index.html">教师综合评价系统</a></div>
@@ -81,7 +82,7 @@
                                     <cite>教师管理</cite></a>
                             </li> 
                              <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('学生列表','${pageContext.request.contextPath}/student/studentlist')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>学生管理</cite></a>
                             </li>   

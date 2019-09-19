@@ -3,9 +3,48 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="evaluation.dao.StudentDao">
-      <select id="getStus" resultType="evaluation.entity.Student">
-      	 select * from student
+     
+      
+      <resultMap id="studentm" type="evaluation.entity.Student">
+      
+		<id property="studentid" column="studentid" />
+		<result property="name" column="name" />
+		<result property="sex" column="sex" />
+		<result property="studentnumber" column="studentnumber" />
+		<result property="tel" column="tel" />
+		<result property="password" column="password" />
+		<result property="power" column="power" />
+		<result property="classid" column="classid" />	
+		<result property="birthday" column="birthday" />
+		<association property="cla"
+			javaType="evaluation.entity.Classtb">
+			<id property="classid" column="classid" />
+			<result property="classnumber" column="classnumber" />
+			<result property="classname" column="classname" />
+		</association>
+		
+	</resultMap>
+	
+      <select id="getStus" resultMap="studentm">
+      	select * from student,classtb where
+		student.classid=classtb.classid
       </select>
       
-      
+       <select id="getStudentBystuid"  resultMap="studentm">
+	   select * from student,classtb where studentid=#{studentid} and student.classid=classtb.classid
+	  </select>
+	  
+	  <update id="updateStudent" >
+	  update student set studentnumber=#{studentnumber},classid=#{classid} where studentid=#{studentid} 
+	  
+	  </update>
+	  
+	  <delete id="studentdel">
+	  delete from student where studentid=#{studentid}	  
+	  </delete>
+	  
+	  <delete id="studentall" parameterType="String">
+	   delete from student where studentnumber in(#{aa})
+	  
+	  </delete>
 </mapper>
