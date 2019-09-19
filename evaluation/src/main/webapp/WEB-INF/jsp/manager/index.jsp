@@ -105,7 +105,7 @@
                                     <cite>专业列表</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('统计页面','welcome1.html')">
+                                <a onclick="xadmin.add_tab('课程列表','${pageContext.request.contextPath}/course/course-list')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>课程列表</cite></a>
                             </li>
