@@ -13,34 +13,42 @@ import evaluation.util.Page;
 
 @Service
 public class TeacherService {
+	
+	//注入接口
 	@Autowired
 	private TeacherDao teacherDao;
 	
+	//分页
 	public List<Teacher> getTeachers(Page<Teacher> page){
 		return teacherDao.getTeachers(page);
 	}
 	
+	//删除
 	public int delTeacher(String teachernumber) {
 		return teacherDao.delTeacher(teachernumber);
 	}
 	
+	//查询一组
 	public int getCount() {
 		return teacherDao.getCount();
 	}
 	
+	//新增
 	public int addTeacher(Teacher teacher) {
 		return teacherDao.addTeacher(teacher);
 	}
 	
+	//修改
 	public int updateTeacher(Teacher teacher) {
 		return teacherDao.updateTeacher(teacher);
 	}
 	
+	//根据id查询
 	public Teacher getTeacherByid(int teacherid) {
 		return teacherDao.getTeacherByid(teacherid);
 	}
 	
-
+	//分页
     public void RecordsList(Page<Teacher> page) {
         int count=teacherDao.getCount();//获取所有消息的数量
         page.setTotalCount(count);
@@ -53,7 +61,8 @@ public class TeacherService {
         List<Teacher> teachers=teacherDao.getTeachers(page);
         page.setDataList(teachers);
     }
-
+    
+    //登录判断
 	public boolean login(String teachernumber,String password) {
 		Teacher teacher=new Teacher();
 		teacher.setTeachernumber(teachernumber);
@@ -64,7 +73,11 @@ public class TeacherService {
 		}
 		return false;
 		}
-		
+	
+	//批量删除	
+	public int delAllTeacher(String[] ids) {
+		return teacherDao.delAllTeacher(ids);
+	}
 
 }
 

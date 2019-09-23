@@ -19,7 +19,7 @@
         <![endif]-->
         
         <script type="text/javascript">
-        
+        /*修改*/
         function update(studentid){
     		 location.href="${pageContext.request.contextPath}/student/studentedit?studentid="+studentid;
     	alert(studentid)
@@ -120,7 +120,7 @@
 										<td class="td-manage">
 											<button class="layui-btn layui-btn layui-btn-xs"
 												onclick="update('${item.studentid}') " href="#">
-												<i class="layui-icon">&#xe642;</i>编辑
+												<i class="layui-icon">&#xe642;</i>修改
 											</button>
 											<button class="layui-btn-danger layui-btn layui-btn-xs"
 												onclick="member_del(this,'${item.studentid}')" href="javascript:;">
@@ -243,7 +243,7 @@
           });
       }
 
-
+      /*批量删除*/
 
       function delAll (argument) {
         var ids = []; 

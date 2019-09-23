@@ -179,7 +179,7 @@
             } 
         });
         ids = ids.substring(0,ids.length-1);
-  		alert(ids);	
+  		//alert(ids);	
   				
         layer.confirm('确认要删除吗？'+ids,function(index){
             //捉到所有被选中的，发异步进行删除

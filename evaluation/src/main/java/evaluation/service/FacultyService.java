@@ -10,13 +10,11 @@ import evaluation.entity.Faculty;
 
 @Service
 public class FacultyService {
+	//注入接口
 	@Autowired
 	private FacultyDao facultyDao;
-
-	
-
-
-	
+    
+	//新增
 	public int insertFaculty(Faculty faculty) {
 		int cnt=facultyDao.isFacultybyname(faculty.getFacultyname());
     	if(cnt>0){
@@ -26,14 +24,17 @@ public class FacultyService {
 		return i;
 	}
 	
+	//删除
 	public int delFaculty(int facultyid) {
 		return facultyDao.delFaculty(facultyid);
 	}
 	
+	//批量删除
 	public int delchecked(String[] ids1) {
 		return facultyDao.delchecked(ids1);
 	}
 	
+	//修改
 	public int updateFaculty(Faculty faculty){
 		int cnt=facultyDao.isFacultybyname(faculty.getFacultyname());
     	if(cnt>0){
@@ -43,10 +44,12 @@ public class FacultyService {
 		return i;
 	}
 	
+	//查询所有
 	public List<Faculty> getFaculty() {
 		return facultyDao.getFaculty();
 	}
 	
+	//根据id查询
 	public Faculty getFacultybyId(int facultyid) {
 		return facultyDao.getFacultybyId(facultyid);
 	}

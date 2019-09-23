@@ -1,6 +1,6 @@
 package evaluation.controller;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,7 +87,7 @@ public class CourseController {
 	@RequestMapping("byincourse")
 	@ResponseBody
 	public ResultMsg byincourse(String ids) {
-		System.out.println(ids);
+		//System.out.println(ids);
 		String[] courseids = ids.split(",");
 		int i = courseService.byincourse(courseids);
 		if(i>0) {

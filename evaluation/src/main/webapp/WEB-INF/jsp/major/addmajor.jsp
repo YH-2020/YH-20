@@ -68,6 +68,7 @@
         </div>
         
          <script>
+         //新增提交
         function add(){
         	var url="${pageContext.request.contextPath}/major/addmajor_submit";
         	var param=$(".layui-form").serialize();

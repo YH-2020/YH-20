@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -14,23 +15,15 @@ import evaluation.entity.Teacher;
 import evaluation.service.TeacherService;
 import evaluation.util.Page;
 
-
-
-
-
 @Controller
 @RequestMapping("/teacher")
 public class TeacherController {
+	
+	//注入service
 	@Autowired
 	private TeacherService teacherService;
 	
-	/*@RequestMapping("/teacher-list")
-	 public ModelAndView index() {
-		List<Teacher> teachers=teacherService.getTeachers();
-		 ModelAndView mv=new ModelAndView("teacher/teacher-list");
-		 mv.addObject("teachers", teachers);
-		 return mv;
-	 }*/
+	//教师列表
 	@RequestMapping("/teacher-list")
 	 public ModelAndView index() {		     
 		 // 将分页参数封装到分页对象中
@@ -46,6 +39,8 @@ public class TeacherController {
 		 mv.addObject("totalPageCount",page.getTotalPageCount());
 		 return mv;
 	 }
+	
+	//分页
 	@RequestMapping("/teacher-page")
 	 public ModelAndView teacherPage(int pageIndex) {		     
 		 // 将分页参数封装到分页对象中
@@ -62,6 +57,7 @@ public class TeacherController {
 		 return mv;
 	 }
 	 
+	//删除
 	@RequestMapping("/delete")
 	 public ModelAndView delete(String teachernumber) {
 		 teacherService.delTeacher(teachernumber);
@@ -69,12 +65,14 @@ public class TeacherController {
 		 return mv;
 	 }
 	
+	//新增页面
 	@RequestMapping("/add")
 	 public ModelAndView add() {
 		 ModelAndView mv=new ModelAndView("teacher/add");
 		 return mv;
 	 }
 	
+	//新增提交
 	@RequestMapping("/add-submit")
 	 public ResultMsg add_submit(Teacher teacher) {
 		//新增教师
@@ -86,6 +84,8 @@ public class TeacherController {
 			}
 			return new ResultMsg(0,"添加失败");
 		}
+	
+	//修改页面
 	@RequestMapping("/update")
 	 public ModelAndView update(int teacherid) {
 		 Teacher teacher=teacherService.getTeacherByid(teacherid);
@@ -94,6 +94,7 @@ public class TeacherController {
 		 return mv;
 	 }
 	
+	//修改提交
 	@RequestMapping("/update-submit")
 	 public ResultMsg update_submit(Teacher teacher) {
 		//新增教师
@@ -107,13 +108,14 @@ public class TeacherController {
 		}
 	
 
-        
+	//登录页面   
 	 @RequestMapping("/login")
      public ModelAndView login() {
     	 ModelAndView mv=new ModelAndView("teacher/login");
     	 return mv;
 }
 	 
+	 //登录判断
 	 @RequestMapping("/managerlogin")
 	 public ModelAndView  managerlogin(Model model,Teacher teacher){
 		 model.addAttribute("teacher",teacher);
@@ -128,6 +130,20 @@ public class TeacherController {
 		
 		
 	 }
+	 
+	//批量删除
+		@RequestMapping("delallteacher")
+		@ResponseBody
+		public ResultMsg byincourse(String ids) {
+			//System.out.println(ids);
+			String[] teacherids = ids.split(",");
+			int i = teacherService.delAllTeacher(teacherids);
+			if(i>0) {
+				return new ResultMsg(1, "删除成功");
+			}else {
+				return new ResultMsg(2, "删除 失败");
+			}
+		}
 	 
 }
 

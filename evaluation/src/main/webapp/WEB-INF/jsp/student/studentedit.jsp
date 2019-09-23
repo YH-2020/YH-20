@@ -20,6 +20,7 @@
             <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
         <![endif]--></head>
     <script type="text/javascript">
+    /*修改*/
     function update(){
     	var url="${pageContext.request.contextPath}/student/updatestucontroll";
     	var param=$("#updatestu").serialize();//序列化表单

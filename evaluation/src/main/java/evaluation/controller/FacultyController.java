@@ -15,10 +15,12 @@ import evaluation.entity.Result;
 @Controller
 @RequestMapping("/faculty")
 public class FacultyController {
+	
+	//注入service
 	 @Autowired
 	 private FacultyService facultyService;
 	
-	
+	//院系列表
 	 @RequestMapping("/facultylist")
 	 public ModelAndView matchlist() {
 		   List<Faculty> faculties=facultyService.getFaculty();
@@ -27,12 +29,14 @@ public class FacultyController {
 		   return mv;
 	 }
 	 
+	 //新增页面
 	 @RequestMapping("/addfaculty")
 	 public ModelAndView addfaculty() {
 	 	 ModelAndView mv=new ModelAndView("faculty/addfaculty");
 	 	 return mv;
 	  }
 	 
+	 //新增提交
 	 @RequestMapping("/add_submit")
 	 @ResponseBody
 	 public Result add_submit(String facultynumber,String facultyname) {
@@ -49,6 +53,7 @@ public class FacultyController {
 		}
 	 }
 	 
+	 //删除
 	 @RequestMapping("/del")
 	 @ResponseBody
 	 public Result del(int facultyid) {
@@ -60,6 +65,7 @@ public class FacultyController {
 		   }
 	 }
 	 
+	 //批量删除
 	 @RequestMapping("/delchecked")
 	 @ResponseBody
 	 public Result delchecked(String aa) {
@@ -74,7 +80,7 @@ public class FacultyController {
 		   }
 	 }
 	 
-	 
+	 //修改
 	 @RequestMapping("/update")
 		public ModelAndView edit(int facultyid){
 			ModelAndView mv=new ModelAndView("faculty/editfaculty");
@@ -83,6 +89,7 @@ public class FacultyController {
 			return mv;
 		}
 	 
+	 //修改提交
 	   @RequestMapping("/update_submit")
 		@ResponseBody
 		public Result update_submit(Faculty faculty){

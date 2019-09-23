@@ -16,6 +16,7 @@
     </head>
     <script src=${pageContext.request.contextPath}/js/jquery.min.js></script>
     <script type="text/javascript">
+    /*删除*/
 function del(facultyid){
 	  var result=confirm("是否删除?");
 	  if(result){
@@ -65,7 +66,7 @@ function del(facultyid){
                         </div>
                         <div class="layui-card-header">
                             <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                            <button class="layui-btn" onclick="xadmin.open('新增学院','${pageContext.request.contextPath}/faculty/addfaculty',330,260)"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn" onclick="xadmin.open('新增学院','${pageContext.request.contextPath}/faculty/addfaculty',600,400)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body ">
                             <table class="layui-table layui-form">
@@ -94,12 +95,14 @@ function del(facultyid){
                                
                                  
                                   <td class="td-manage">
-                                    <a title="编辑"  onclick="xadmin.open('编辑信息','${pageContext.request.contextPath}/faculty/update?facultyid=${item.facultyid}',330,260)" href="javascript:;">
-                                        <i class="layui-icon">&#xe642;</i>
-                                      </a>
-                                    <a title="删除" onclick="del('${item.facultyid}')" href="javascript:;">
-                                      <i class="layui-icon">&#xe640;</i>
-                                    </a>
+                                  <button class="layui-btn layui-btn layui-btn-xs" 
+                                       onclick="xadmin.open('编辑信息','${pageContext.request.contextPath}/faculty/update?facultyid=${item.facultyid}',600,400)" href="javascript:;">
+                                       <i class="layui-icon">&#xe642;</i>修改
+                                      </button>
+                                      <button class="layui-btn-danger layui-btn layui-btn-xs"
+                                     onclick="del('${item.facultyid}')" href="javascript:;">
+                                     <i class="layui-icon">&#xe640;</i>删除
+                                   </button>
                                   </td>
                                    
                                 </tr>
@@ -149,7 +152,7 @@ function del(facultyid){
         });
       });
     
-     
+      /*批量删除*/
      
       function delAll (argument) {
           var ids = []; 

@@ -15,18 +15,16 @@ import evaluation.service.StudentService;
 
 import evaluation.entity.ResultMsg;
 
-
-
-
-
 @Controller
 @RequestMapping("/student")
 public class StudentController {
+	
+	//注入service
 	@Autowired
 	private StudentService getStus;
 	private ClasstbService claser;
 	
-	
+	//学生列表
 	@RequestMapping("/studentlist")
 	public ModelAndView studentlist() {
 		List<Student> students =getStus.getStus();
@@ -36,6 +34,7 @@ public class StudentController {
 		return mv;
 	}
 	
+	//修改页面
 	@RequestMapping("/studentedit")
 	public ModelAndView studentedit(int studentid) {
 		
@@ -48,18 +47,19 @@ public class StudentController {
 	return mv;
 	}
 	
-	
+	//修改提交
 	@RequestMapping("updatestucontroll")
 	@ResponseBody
 	public ResultMsg update(Student student) {
 		//更新雇员
 		int i=getStus.updateStudent(student);
 		if (i > 0) {
-			return new ResultMsg(1, "更新雇员成功");
+			return new ResultMsg(1, "更新学生成功");
 		}
-		return new ResultMsg(0, "更新雇员失败");
+		return new ResultMsg(0, "更新学生失败");
 	}
 	
+	//删除
 	@RequestMapping("studentdel")
 	@ResponseBody
 	public ResultMsg studentdel(int studentid) {
@@ -71,6 +71,8 @@ public class StudentController {
 		}
 		return new ResultMsg(0, "删除失败");
 	}
+	
+	//批量删除
 	@RequestMapping("studentall")
 	@ResponseBody
 	public ResultMsg studentall(String aa) {

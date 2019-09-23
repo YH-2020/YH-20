@@ -81,14 +81,16 @@
                                    
                                     
                                     <td class="td-manage">
+                                      <button class="layui-btn layui-btn layui-btn-xs" 
+                                       href="javascript:;" onclick="xadmin.open('编辑','${pageContext.request.contextPath}/major/updatemajor?majorid=${item.majorid }',600,400)" >
+                                        <i class="layui-icon">&#xe642;</i>修改
                                       
-                                      <a title="编辑" href="javascript:;" onclick="xadmin.open('编辑','${pageContext.request.contextPath}/major/updatemajor?majorid=${item.majorid }',600,400)" >
-                                        <i class="layui-icon">&#xe642;</i>
-                                      </a>
+                                      </button> 
+                                      <button class="layui-btn-danger layui-btn layui-btn-xs"
+                                     onclick="member_del(this,'${item.majorid}')" href="javascript:;">
+                                       <i class="layui-icon">&#xe640;</i>删除
                                       
-                                      <a title="删除" onclick="member_del(this,'${item.majorid}')" href="javascript:;">
-                                        <i class="layui-icon">&#xe640;</i>
-                                      </a>
+                                       </button> 
                                     </td>
                                   </tr>
                                     </c:forEach>
@@ -166,7 +168,7 @@
           });
       }
 
-      /*用户-删除*/
+      /*删除*/
       function member_del(obj,id){
           layer.confirm('确认要删除吗？',function(index){
               //发异步删除数据
@@ -194,21 +196,38 @@
 //       }
 
 
-
+ /*批量删除*/
       function delAll (argument) {
-        var ids = [];
+        var ids = "";
 
         // 获取选中的id 
         $('tbody input').each(function(index, el) {
+        	var majorid = $(this).parent().next();
             if($(this).prop('checked')){
-               ids.push($(this).val())
+               //ids.push($(this).val())
+            ids+=majorid.html()+",";
             }
         });
+        ids = ids.substring(0,ids.length-1);
+  		
   
         layer.confirm('确认要删除吗？'+ids.toString(),function(index){
             //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {icon: 1});
-            $(".layui-form-checked").not('.header').parents('tr').remove();
+            layer.closeAll();      
+            $.ajax({
+          	  type:"post",
+            	  url:"${pageContext.request.contextPath}/major/delallmajor", 
+            	  data:{"ids":ids},
+            	  success:function(data){
+          		if(data.flag == 1){
+          			layer.alert("删除成功", {
+                          icon: 1
+                      },function(){
+                      	xadmin.father_reload();
+                      });
+          		}
+          	}            	  
+            })
         });
       }
     </script>

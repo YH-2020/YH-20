@@ -66,18 +66,18 @@
         </div>
          
          <script>
-        function add(){
-        	var url="${pageContext.request.contextPath}/major/addmajor_submit";
-        	var param=$(".layui-form").serialize();
-        	$.post(
-        			url,param,function(data){
-        				alert(data.msg);
-        				if(data.flag==1){
-        					location.href="${pageContext.request.contextPath}/major/majorlist";
-        				}
-        			});
-        }
-        
+//         function add(){
+//         	var url="${pageContext.request.contextPath}/major/addmajor_submit";
+//         	var param=$(".layui-form").serialize();
+//         	$.post(
+//         			url,param,function(data){
+//         				alert(data.msg);
+//         				if(data.flag==1){
+//         					location.href="${pageContext.request.contextPath}/major/majorlist";
+//         				}
+//         			});
+//         }
+        /*修改提交*/
         function update(){
         	var url="${pageContext.request.contextPath}/major/updatemajor_submit";
         	var param = $(".layui-form").serialize();
