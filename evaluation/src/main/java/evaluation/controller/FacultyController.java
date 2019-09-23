@@ -63,7 +63,6 @@ public class FacultyController {
 	 @RequestMapping("/delchecked")
 	 @ResponseBody
 	 public Result delchecked(String aa) {
-		 System.out.println(aa);
 		 String[] ids1=aa.split(",");
 		   int i=facultyService.delchecked(ids1);
 		   System.out.println(i);

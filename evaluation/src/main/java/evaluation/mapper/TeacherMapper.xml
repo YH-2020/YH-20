@@ -4,6 +4,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="evaluation.dao.TeacherDao">
 
+ <resultMap id="teachertm" type="evaluation.entity.Teacher">
+      
+		<id property="teacherid" column="teacherid" />
+		<result property="name" column="name" />
+		<result property="sex" column="sex" />
+		<result property="teachernumber" column="teachernumber" />
+		<result property="phone" column="phone" />
+		<result property="password" column="password" />
+		<result property="power" column="power" />
+		<result property="majorid" column="majorid" />
+		<result property="remarks" column="remarks" />		
+		<result property="birthday" column="birthday" />
+		<association property="maj"
+			javaType="evaluation.entity.Major">
+			<id property="majorid" column="majorid" />
+			<result property="majornumber" column="majornumber" />
+			<result property="majorname" column="majorname" />
+			<result property="facultyid" column="facultyid" />
+		</association>
+		
+	</resultMap>
+
+ <select id="getTeachersmajor" resultMap="teachertm">
+      	select * from teacher,major where	teacher.majorid=major.majorid;
+      </select>
 
       <select id="getTeacher" parameterType="evaluation.entity.Teacher" resultType="evaluation.entity.Teacher">
 		select * from teacher where teachernumber=#{teachernumber} and password=#{password}
@@ -40,5 +65,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		power=#{power},majorid=#{majorid} where teacherid=#{teacherid}
 	  </update>
      
+      
 
 </mapper>

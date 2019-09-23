@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import evaluation.dao.TeacherDao;
+import evaluation.entity.Student;
 import evaluation.entity.Teacher;
 
 import evaluation.util.Page;
@@ -15,6 +16,10 @@ import evaluation.util.Page;
 public class TeacherService {
 	@Autowired
 	private TeacherDao teacherDao;
+	
+	public List<Teacher> getTeachersmajor(){
+		return teacherDao.getTeachersmajor();
+	}
 	
 	public List<Teacher> getTeachers(Page<Teacher> page){
 		return teacherDao.getTeachers(page);

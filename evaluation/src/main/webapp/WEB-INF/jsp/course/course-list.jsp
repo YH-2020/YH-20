@@ -37,7 +37,7 @@
                                     <input id="mlike" type="text" name="coursename"  placeholder="请输入课程名" autocomplete="off" class="layui-input">
                                 </div>
                                 <div class="layui-inline layui-show-xs-block">
-                                    <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                                    <button type="submit" class="layui-btn"  lay-submit=""   lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
                                 </div>
                             </form>
                         </div> 

@@ -55,9 +55,9 @@ public class StudentController {
 		//更新雇员
 		int i=getStus.updateStudent(student);
 		if (i > 0) {
-			return new ResultMsg(1, "更新雇员成功");
+			return new ResultMsg(1, "更新学生成功");
 		}
-		return new ResultMsg(0, "更新雇员失败");
+		return new ResultMsg(0, "更新学生失败");
 	}
 	
 	@RequestMapping("studentdel")

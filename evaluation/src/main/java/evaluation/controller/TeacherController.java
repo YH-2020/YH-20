@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import evaluation.entity.ResultMsg;
+import evaluation.entity.Student;
 import evaluation.entity.Teacher;
 import evaluation.service.TeacherService;
 import evaluation.util.Page;
@@ -106,7 +107,13 @@ public class TeacherController {
 			return new ResultMsg(0,"修改失败");
 		}
 	
-
+	@RequestMapping("/teacherlist")
+	public ModelAndView studentlist() {
+		List<Teacher> teachers =teacherService.getTeachersmajor();
+		ModelAndView mv = new ModelAndView("teacher/teacher-list");
+		mv.addObject("teachers", teachers);
+		return mv;
+	}
         
 	 @RequestMapping("/login")
      public ModelAndView login() {
