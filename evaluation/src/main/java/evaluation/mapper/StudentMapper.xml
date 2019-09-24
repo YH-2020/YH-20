@@ -33,7 +33,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	   select * from student,classtb where studentid=#{studentid} and student.classid=classtb.classid
 	  </select>
 	  
+
 	  <!-- 修改学生 -->
+	  <insert id="studentadd" parameterType="evaluation.entity.Student">
+	  insert into student (studentnumber,name,password,power,classid)values(#{studentnumber},#{name},#{password},#{power},#{classid})
+	  </insert>
+	  
 	  <update id="updateStudent" >
 	  update student set studentnumber=#{studentnumber},classid=#{classid} where studentid=#{studentid} 
 	  </update>

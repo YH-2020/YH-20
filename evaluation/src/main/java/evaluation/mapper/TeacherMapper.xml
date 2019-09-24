@@ -45,7 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       
 <!-- 根据id查询教师 -->
       <select id="getTeacherByid" parameterType="int" resultType="evaluation.entity.Teacher">
-       select * from teacher where taecherid=#{teacherid};
+       select * from teacher where teacherid=#{teacherid};
      </select>
       
 <!-- 查询一组信息 -->     

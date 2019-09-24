@@ -24,39 +24,9 @@ public class TeacherController {
 	@Autowired
 	private TeacherService teacherService;
 	
-	//教师列表
-	@RequestMapping("/teacher-list")
-	 public ModelAndView index() {		     
-		 // 将分页参数封装到分页对象中
-         Page<Teacher> page = new Page<Teacher>();
-         page.setPageIndex(0);
-         page.setPageSize(8);
-         List<Teacher> teachers=teacherService.getTeachers(page);
-		 //teacherService.RecordsList(page);	 
-		 //List<Teacher> teachers = page.getDataList();	 
-		 //page.setDataList(teachers);
-		 ModelAndView mv=new ModelAndView("teacher/teacher-list");		 
-		 mv.addObject("teachers", teachers);
-		 mv.addObject("totalPageCount",page.getTotalPageCount());
-		 return mv;
-	 }
+	//教师列表	
 	
-	//分页
-	@RequestMapping("/teacher-page")
-	 public ModelAndView teacherPage(int pageIndex) {		     
-		 // 将分页参数封装到分页对象中
-        Page<Teacher> page = new Page<Teacher>();
-        page.setPageIndex(8*(pageIndex-1)+1);
-        page.setPageSize(8*(pageIndex-1)+8);
-        List<Teacher> teachers=teacherService.getTeachers(page);
-		teacherService.RecordsList(page);	 
-		 List<Teacher> datalist = page.getDataList();	 
-		 page.setDataList(teachers);
-		 ModelAndView mv=new ModelAndView("teacher/teacher-list");		 
-		 mv.addObject("teachers", teachers);
-		 mv.addObject("datalist",datalist);
-		 return mv;
-	 }
+	
 	 
 	//删除
 	@RequestMapping("/delete")

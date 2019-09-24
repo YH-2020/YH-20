@@ -4,16 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import evaluation.entity.Course;
 import evaluation.entity.Teacher;
-import evaluation.util.Page;
+
 
 public interface TeacherDao {
 	
-	List<Teacher> getTeachersmajor();
-	
-	//分页
-	List<Teacher> getTeachers(Page<Teacher> page);
+	List<Teacher> getTeachersmajor();	
 	//根据id查询
 	Teacher getTeacherByid(int teacherid);
 	//查询一组

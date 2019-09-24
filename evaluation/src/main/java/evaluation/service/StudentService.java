@@ -43,4 +43,8 @@ public class StudentService {
 			
 			return studentDao.studentall(aa1);
 		}
+        public int studentadd(Student student){
+			
+			return studentDao.studentadd(student);
+		} 
 	}

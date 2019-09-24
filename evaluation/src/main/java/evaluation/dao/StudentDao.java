@@ -16,4 +16,5 @@ public interface StudentDao {
 	int studentdel(int studentid);
 	//批量删除
 	int studentall(String[] aa1);
+	int studentadd(Student student);
 }
