@@ -85,9 +85,17 @@ public class StudentController {
 
 		int i = getStus.updateStudent(student);
 		if (i > 0) {
-			return new ResultMsg(1, "更新成功");
+
+			
+
+			return new ResultMsg(1, "更新学生成功");
+
 		}
-		return new ResultMsg(0, "更新失败");
+
+		
+
+		return new ResultMsg(0, "更新学生失败");
+
 	}
 
 	@RequestMapping("studentdel")

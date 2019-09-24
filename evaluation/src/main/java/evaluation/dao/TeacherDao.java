@@ -2,10 +2,13 @@ package evaluation.dao;
 
 import java.util.List;
 
+
 import evaluation.entity.Teacher;
 import evaluation.util.Page;
 
 public interface TeacherDao {
+	
+	List<Teacher> getTeachersmajor();
 	
 	List<Teacher> getTeachers(Page<Teacher> page);
 	
@@ -20,7 +23,10 @@ public interface TeacherDao {
 	int delTeacher(String teachernumber);
 	
 	int updateTeacher(Teacher teacher);
+	
 
+	
+	
 	Teacher getTeacher(Teacher teacher);
 
 

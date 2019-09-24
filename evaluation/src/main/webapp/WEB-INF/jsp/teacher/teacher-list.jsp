@@ -87,19 +87,19 @@
                                     <td>${teacher.password}</td>
                                     <td>${teacher.phone}</td>
                                     <td>${teacher.birthday}</td>
-                                    <td>${teacher.majorid}</td>
+                                    <td>${teacher.maj.majorname}</td>
                                     <td>${teacher.power}</td>
                                     <td>${teacher.remarks}</td>                                   
                                     <td class="td-manage">                                     
-                                      <a title="编辑"  onclick="xadmin.open('编辑','update?teacherid=${teacher.teacherid}',600,400)" href="javascript:;">
-                                        <i class="layui-icon">&#xe642;</i>
-                                      </a>
-                                      <a onclick="xadmin.open('修改密码','member-password.html',600,400)" title="重置密码" href="javascript:;">
-                                        <i class="layui-icon">&#xe631;</i>
-                                      </a>
-                                      <a title="删除" onclick="del('${teacher.teachernumber}')" href="javascript:;">
-                                        <i class="layui-icon">&#xe640;</i>
-                                      </a>
+                                      <button class="layui-btn layui-btn layui-btn-xs"  onclick="xadmin.open('编辑','update?teacherid=${teacher.teacherid}',600,400)" href="javascript:;">
+                                        <i class="layui-icon">&#xe642;</i>编辑
+                                      </button>
+                                      <button class="layui-btn-warm layui-btn layui-btn-xs"  onclick="xadmin.open('修改密码','member-password.html',600,400)" title="重置密码" href="javascript:;">
+                                        <i class="layui-icon">&#xe631;</i>重置密码
+                                      </button>
+                                      <button class="layui-btn-danger layui-btn layui-btn-xs" onclick="del('${teacher.teachernumber}')" href="javascript:;">
+                                        <i class="layui-icon">&#xe640;</i>删除
+                                      </button>
                                     </td>
                                   </tr> 
                                    </c:forEach>                                 

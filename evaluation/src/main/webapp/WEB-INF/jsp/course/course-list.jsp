@@ -32,18 +32,12 @@
                 <div class="layui-col-md12">
                     <div class="layui-card">
                          <div class="layui-card-body ">
-                            <form class="layui-form layui-col-space5">
+                            <form class="layui-form layui-col-space5" action="${pageContext.request.contextPath}/course/mselect">
                                 <div class="layui-inline layui-show-xs-block">
-                                    <input class="layui-input"  autocomplete="off" placeholder="开始日" name="start" id="start">
+                                    <input id="mlike" type="text" name="coursename"  placeholder="请输入课程名" autocomplete="off" class="layui-input">
                                 </div>
                                 <div class="layui-inline layui-show-xs-block">
-                                    <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">
-                                </div>
-                                <div class="layui-inline layui-show-xs-block">
-                                    <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
-                                </div>
-                                <div class="layui-inline layui-show-xs-block">
-                                    <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                                    <button type="submit" class="layui-btn"  lay-submit=""   lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
                                 </div>
                             </form>
                         </div> 
@@ -165,7 +159,7 @@
       }
 
 
-
+	//批量删除
      function delAll (argument) {
         var ids = ""; 
 		
@@ -190,7 +184,7 @@
               	  data:{"ids":ids},
               	  success:function(data){
             		if(data.flag == 1){
-            			layer.alert("删除成功", {
+            			layer.alert("查询成功", {
                             icon: 1
                         },function(){
                         	xadmin.father_reload();
@@ -200,6 +194,33 @@
               })
         });
       } 
+     
+     //模糊查询
+     function selectm(){
+    	 var name = $("#mlike").val();
+    	 alert(name);
+    	 $.ajax({
+    		 type:"post",
+    		 url:"${pageContext.request.contextPath}/course/mselect",
+    		 data:{"coursename":name},
+    		 success:function(data){
+    			 if(data.flag == 1){
+         			layer.alert("查询成功", {
+                         icon: 1
+                     },function(){
+                     	xadmin.father_reload();
+                     });
+         		}else{
+         			layer.alert("查询失败", {
+                        icon: 1
+                    },function(){
+                    	xadmin.father_reload();
+                    });
+         		}
+    		 }
+    	 })
+     }
+     
     </script>
 
 </html>

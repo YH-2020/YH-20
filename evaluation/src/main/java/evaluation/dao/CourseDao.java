@@ -2,6 +2,8 @@ package evaluation.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import evaluation.entity.Course;
 
 public interface CourseDao {
@@ -17,4 +19,6 @@ public interface CourseDao {
 	int byidcourse(int courseid);
 	//批量删除
 	int byincourse(String[] ids);
+	//模糊查询
+	List<Course> mhselect(@Param("coursename")String coursename);
 }
