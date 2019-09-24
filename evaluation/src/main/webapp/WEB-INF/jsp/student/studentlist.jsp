@@ -17,16 +17,7 @@
           <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
           <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-        
-        <script type="text/javascript">
-        
-       /*  function update(studentid){
-    		 location.href="${pageContext.request.contextPath}/student/studentedit?studentid="+studentid;
-    	alert(studentid)
-        } */
-       
-        
-        </script>
+  
     </head>
    
     <body>
@@ -60,7 +51,8 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="layui-card-header">
+					
+					<div class="layui-card-header">
                             <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
                             <button class="layui-btn" onclick="xadmin.open('添加用户','${pageContext.request.contextPath}/student/studentadd',600,400)"><i class="layui-icon"></i>添加</button>
                         </div>
@@ -77,9 +69,9 @@
                                     <th>性别</th>
                                     <th>电话号码</th>
                                     <th>班级</th>
+                                    <th>生日</th>
                                     <th>年龄</th>
-                                    <th>时间</th>
-                                    <th>操作</th>
+                                    <th>操作 </th>
                                    
                                     </tr>
                                 </thead>
@@ -95,32 +87,14 @@
 										<td>${item.sex}</td>
 										<td>${item.tel}</td>
                                         <td>${item.cla.classname}</td>
-                                        <td>${item.tel}</td>
-										<td>
-										<script type="text/javascript">
-										var myDate = new Date();
-										myDate.getYear();        
-										myDate.getFullYear();    
-										myDate.getMonth();      
-										myDate.getDate();       
-										myDate.getDay();         
-										myDate.getTime();       
-										myDate.getHours();      
-										myDate.getMinutes();    
-										myDate.getSeconds();     
-										myDate.getMilliseconds();    
-										myDate.toLocaleDateString();     
-										var mytime=myDate.toLocaleTimeString();     
-										myDate.toLocaleString( );        
-										${myDate.getYear()}
+                                        <td id="bir${item.studentid}" name="bird" style="display:none">${item.birthday}</td>
+                                        <td  id="birthday${item.studentid}"></td>
+										<td id="b${item.studentid}" name="nl">
 										
-										</script>
-										
-										</td>
+								     	</td>
 
 										<td class="td-manage">
-											<%-- <button class="layui-btn layui-btn layui-btn-xs"
-												onclick="update('${item.studentid}')" href="#"> --%>
+											
 												
 											<button class="layui-btn layui-btn layui-btn-xs"
 												onclick="xadmin.open('编辑用户','${pageContext.request.contextPath}/student/studentedit?studentid=${item.studentid}',600,400 )"
@@ -133,6 +107,9 @@
 												onclick="member_del(this,'${item.studentid}')" href="javascript:;">
 												<i class="layui-icon">&#xe640;</i>删除
 											</button>
+											
+											
+											
 										</td>
 									</tr>
 								</c:forEach>
@@ -157,7 +134,76 @@
         </div> 
     </body>
     <script>
-      layui.use(['laydate','form'], function(){
+    function dateFormat (date, format) {
+	    date = new Date(date);
+	    date.setHours(date.getHours()-14);
+	    var o = {
+	        'M+' : date.getMonth() + 1, //month
+	        'd+' : date.getDate(), //day
+	        'H+' : date.getHours(), //hour
+	        'm+' : date.getMinutes(), //minute
+	        's+' : date.getSeconds(), //second
+	        'q+' : Math.floor((date.getMonth() + 3) / 3),
+	        'S' : date.getMilliseconds() //millisecond
+	    };
+
+	    if (/(y+)/.test(format))
+	        format = format.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+
+	    for (var k in o)
+	        if (new RegExp('(' + k + ')').test(format))
+	            format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length));
+
+	    return format;
+	}
+	
+    
+    function jsageall(){
+    
+        
+		   var ids = []; 
+	        // 获取选中的id 
+	        $("td[name='bird']").each(function(index, el) {	
+	        	var stunumber=$(this).html();
+	        	
+	               ids.push(stunumber)
+	           
+	        });
+	         var aa=ids.toString();
+	         var aa1 = new Array();
+	        	 aa1=aa.split(",");
+	        	 for(i=0;i<aa1.length;i++){
+	        		 var s_time = dateFormat(aa1[i],'yyyy-MM-dd');
+	        		 var csrq =s_time;	        	  	 
+	        	        var age = '';
+	        	        var d = new Date();
+	        	        var year = d.getFullYear();
+	        	        var month = d.getMonth() + 1;
+	        	        var day = d.getDate();
+	        	        if (month < 10) {
+	        	            month = '0'+month;
+	        	        }
+	        	        if(day < 10){
+	        	            day = '0'+day;
+	        	        }
+	        	        var now = year+'-'+month+'-'+day;
+	        	        if (now.substring(0,4) >= csrq.substring(0,4) && now.substring(5,7) >=csrq.substring(5,7) 
+	        	            && now.substring(8,10)>=csrq.substring(8,10)) {
+	        	            age = year - parseInt(csrq.substring(0,4));
+	        	        }else{
+	        	            age = year - parseInt(csrq.substring(0,4)) - 1;
+	        	        }
+	        	        var s=i+1;
+	        	       $("#birthday"+s).html(s_time);
+	        	         $("#b"+s).html(age); 
+	        		
+	        	 }
+	         
+	};
+    </script>
+    
+    <script>
+        layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
         var  form = layui.form;
 
@@ -186,33 +232,13 @@
 
       });
 
-       /*用户-停用*/
-      function member_stop(obj,id){
-          layer.confirm('确认要停用吗？',function(index){
-
-              if($(obj).attr('title')=='启用'){
-
-                //发异步把用户状态进行更改
-                $(obj).attr('title','停用')
-                $(obj).find('i').html('&#xe62f;');
-
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!',{icon: 5,time:1000});
-
-              }else{
-                $(obj).attr('title','启用')
-                $(obj).find('i').html('&#xe601;');
-
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!',{icon: 5,time:1000});
-              }
-              
-          });
-      }
+     
+     
 
       /*用户-删除*/
       function member_del(obj,studentid){
-          layer.confirm('确认要删除吗？',function(index){
+    	
+               layer.confirm('确认要删除吗？',function(index){
     	        var url="${pageContext.request.contextPath}/student/studentdel?studentid="+studentid;
         	   	$.post(url,function(data){
     	   		if(data.flag==1){
@@ -224,12 +250,10 @@
     	   	
           });
       }
-
-
-
+ 
+      //学生批量删除
       function delAll (argument) {
         var ids = []; 
-
         // 获取选中的id 
         $('tbody input').each(function(index, el) {
         	var stunumber=$(this).parent().next();
@@ -240,6 +264,7 @@
         });
        
          var aa=ids.toString();
+         
          layer.confirm('确认要删除吗？'+aa,function(index){
             //捉到所有被选中的，发异步进行删除
            
@@ -259,6 +284,11 @@
             })
             
         });
+      }	
+      
+      window.onload=function(){
+   	   jsageall();
       }
     </script>
+     
 </html>

@@ -3,6 +3,36 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="evaluation.dao.MajorDao">
-      
+    <resultMap type="evaluation.entity.Major" id="major">
+    <id property="majorid" column="majorid"></id>
+    <result property="majornumber" column="majornumber"></result>
+    <result property="majorname" column="majorname"></result>
+    <result property="facultyid" column="facultyid"></result>
+    <association property="faculty" javaType="evaluation.entity.Faculty">
+    <id property="facultyid" column="facultyid"></id>
+    <result property="facultynumber" column="facultynumber"></result>
+    <result property="facultyname" column="facultyname"></result>
+    </association>
+    </resultMap>  
             
+      <select id="getMajor" resultMap="major">
+      select * from major,faculty where major.facultyid=faculty.facultyid; 
+      </select>     
+      
+      <delete id="deleteMajor" parameterType="int">
+      delete from major where majorid=#{majorid};
+      </delete> 
+      
+      <insert id="addMajor" parameterType="evaluation.entity.Major">
+      insert into major(majorid,majornumber,majorname,facultyid) values(#{majorid},#{majornumber},#{majorname},#{facultyid});
+      </insert>
+      
+      <update id="updateMajor" parameterType="evaluation.entity.Major">
+      update major set majornumber=#{majornumber},majorname=#{majorname},facultyid=#{facultyid} where majorid=#{majorid};
+      </update>
+      
+      <select id="getMajorById" parameterType="int" resultType="evaluation.entity.Major">
+      select * from major where majorid=#{majorid};
+      </select>
+
 </mapper>

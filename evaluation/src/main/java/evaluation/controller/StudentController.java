@@ -1,5 +1,8 @@
 package evaluation.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import evaluation.entity.Classtb;
+import evaluation.entity.GetageByBirthday;
 import evaluation.entity.Student;
 import evaluation.service.ClasstbService;
 import evaluation.service.StudentService;
@@ -25,12 +29,30 @@ public class StudentController {
 	@RequestMapping("/studentlist")
 	public ModelAndView studentlist() {
 		List<Student> students = getStus.getStus();
-
 		ModelAndView mv = new ModelAndView("student/studentlist");
 		mv.addObject("students", students);
+		
 		return mv;
 	}
+//年龄计算
+	@RequestMapping("/getAge")
 
+	public ModelAndView getAge(String  birthday) throws ParseException{
+		  System.out.println("1");
+		 SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		 Date mydate = myFormatter.parse(birthday);
+		 ModelAndView mv = new ModelAndView();
+		 int age = getAgeByBirth(mydate);
+	     mv.addObject("age", age);
+         return mv;
+		
+	}
+	
+	
+	private int getAgeByBirth(Date mydate) {
+	// TODO Auto-generated method stub
+	return 0;
+}
 	@RequestMapping("/studentedit")
 	public ModelAndView studentedit(int studentid) {
 
@@ -44,10 +66,19 @@ public class StudentController {
 	@RequestMapping("/studentadd")
 	public ModelAndView studentadd() {
 		ModelAndView mv = new ModelAndView("student/studentadd");
-
 		return mv;
 	}
+	@RequestMapping("addstudent")
+	@ResponseBody
+	public ResultMsg addstudent(Student student) {
 
+		int i = getStus.studentadd(student);
+		if (i > 0) {
+			return new ResultMsg(1, "更新成功");
+		}
+		return new ResultMsg(0, "更新失败");
+	}
+	
 	@RequestMapping("updatestucontroll")
 	@ResponseBody
 	public ResultMsg update(Student student) {
