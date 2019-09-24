@@ -13,6 +13,13 @@ public class Teacher {
 	private int power;
 	private Date birthday;
 	private int majorid;
+	private Major maj;
+	public Major getMaj() {
+		return maj;
+	}
+	public void setMaj(Major maj) {
+		this.maj = maj;
+	}
 	public int getTeacherid() {
 		return teacherid;
 	}

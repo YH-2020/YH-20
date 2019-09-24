@@ -49,7 +49,12 @@ public class CourseService {
 		return i;
 	}
 	
-	
+	//模糊查询
+	public List<Course> mhselect(String coursename){
+		List<Course> list = courseDao.mhselect(coursename);
+		return list;
+		
+	}
 	
 	
 	

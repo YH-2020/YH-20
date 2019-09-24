@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import evaluation.dao.FacultyDao;
+import evaluation.entity.Course;
 import evaluation.entity.Faculty;
 
 
@@ -54,6 +55,11 @@ public class FacultyService {
 		return facultyDao.getFacultybyId(facultyid);
 	}
 	
-	
+	//模糊查询
+		public List<Faculty> mhselect(String facultyname){
+			List<Faculty> list =facultyDao.mhselect(facultyname);
+			return list;
+			
+		}
 
 }

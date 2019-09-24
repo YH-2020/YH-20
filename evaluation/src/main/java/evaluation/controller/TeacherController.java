@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import evaluation.entity.Course;
 import evaluation.entity.ResultMsg;
+
 import evaluation.entity.Teacher;
 import evaluation.service.TeacherService;
 import evaluation.util.Page;
@@ -108,7 +109,17 @@ public class TeacherController {
 		}
 	
 
+
 	//登录页面   
+	@RequestMapping("/teacherlist")
+	public ModelAndView studentlist() {
+		List<Teacher> teachers =teacherService.getTeachersmajor();
+		ModelAndView mv = new ModelAndView("teacher/teacher-list");
+		mv.addObject("teachers", teachers);
+		return mv;
+	}
+        
+
 	 @RequestMapping("/login")
      public ModelAndView login() {
     	 ModelAndView mv=new ModelAndView("teacher/login");
@@ -145,5 +156,18 @@ public class TeacherController {
 			}
 		}
 	 
+		//模糊查询
+		@RequestMapping("mselect")
+		public ModelAndView mselect(String name) {
+			List<Teacher> list = teacherService.mhselect(name);
+			/*for(Course course : list) {
+				System.out.println(course.getCourseid());
+			}*/
+				
+			
+			ModelAndView mv = new ModelAndView("teacher/teacher-list");
+			mv.addObject("teachers",list);
+			return mv;
+		}	
 }
 

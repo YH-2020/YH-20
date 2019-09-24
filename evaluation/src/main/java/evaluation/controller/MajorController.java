@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import evaluation.entity.Course;
 import evaluation.entity.Faculty;
 import evaluation.entity.Major;
 import evaluation.entity.ResultMsg;
@@ -109,5 +110,18 @@ public class MajorController {
 				return new ResultMsg(2, "删除 失败");
 			}
 		}
-
+    
+		//模糊查询
+		@RequestMapping("mselect")
+		public ModelAndView mselect(String majorname) {
+			List<Major> list = majorService.mhselect(majorname);
+			/*for(Course course : list) {
+				System.out.println(course.getCourseid());
+			}*/
+				
+			
+			ModelAndView mv = new ModelAndView("major/majorlist");
+			mv.addObject("majors",list);
+			return mv;
+		}
 }

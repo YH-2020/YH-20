@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import evaluation.entity.Course;
 import evaluation.entity.Faculty;
 import evaluation.service.FacultyService;
 import evaluation.entity.Result;
@@ -22,7 +24,7 @@ public class FacultyController {
 	
 	//院系列表
 	 @RequestMapping("/facultylist")
-	 public ModelAndView matchlist() {
+	 public ModelAndView facultylist() {
 		   List<Faculty> faculties=facultyService.getFaculty();
 		   ModelAndView mv=new ModelAndView("faculty/facultylist");
 		   mv.addObject("faculties", faculties);
@@ -69,7 +71,6 @@ public class FacultyController {
 	 @RequestMapping("/delchecked")
 	 @ResponseBody
 	 public Result delchecked(String aa) {
-		 System.out.println(aa);
 		 String[] ids1=aa.split(",");
 		   int i=facultyService.delchecked(ids1);
 		   System.out.println(i);
@@ -103,4 +104,18 @@ public class FacultyController {
 				 return new Result(0,"修改失败!");
 			}
 		 }
+	   
+	 //模糊查询
+		@RequestMapping("mselect")
+		public ModelAndView mselect(String facultyname) {
+			List<Faculty> list = facultyService.mhselect(facultyname);
+			for(Faculty da : list) {
+				//System.out.println(da.getFacultyname());
+			}
+				
+			
+			ModelAndView mv = new ModelAndView("faculty/facultylist");
+			mv.addObject("faculties",list);
+			return mv;
+		}
 }

@@ -2,6 +2,9 @@ package evaluation.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import evaluation.entity.Course;
 import evaluation.entity.Faculty;
 
 public interface FacultyDao {
@@ -22,7 +25,8 @@ public interface FacultyDao {
 	int isFacultybyname(String facultyname);
 	//批量删除
 	int delchecked(String[] ids1);
-
+	//模糊查询
+	List<Faculty> mhselect(@Param("facultyname")String facultyname);
 
 
 

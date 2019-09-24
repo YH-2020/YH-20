@@ -46,6 +46,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	#{ids1}
     </foreach>
 </delete> 
-               
+
+<!-- 模糊查询 -->
+     	<select id="mhselect" parameterType="String" resultType="evaluation.entity.Faculty">
+     		select * from faculty where facultyname like '%${facultyname}%'
+     	
+     	</select>               
 
 </mapper>

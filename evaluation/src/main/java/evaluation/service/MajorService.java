@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import evaluation.dao.MajorDao;
+import evaluation.entity.Course;
 import evaluation.entity.Major;
 
 @Service
@@ -37,4 +38,10 @@ public class MajorService {
 	public int delAllMajor(String[] ids) {
 		return majorDao.delAllMajor(ids);
 	}
+	//模糊查询
+	public List<Major> mhselect(String majorname){
+			List<Major> list = majorDao.mhselect(majorname);
+			return list;
+			
+		}
 }

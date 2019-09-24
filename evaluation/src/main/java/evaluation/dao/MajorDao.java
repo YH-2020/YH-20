@@ -2,7 +2,9 @@ package evaluation.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 
+import evaluation.entity.Course;
 import evaluation.entity.Major;
 
 public interface MajorDao {
@@ -18,5 +20,6 @@ public interface MajorDao {
 	Major getMajorById(int majorid);
 	//根据id批量删除
 	int delAllMajor(String[] ids);
-
+	//模糊查询
+	List<Major> mhselect(@Param("majorname")String majorname);
 }

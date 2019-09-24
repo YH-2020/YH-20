@@ -50,7 +50,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	        </foreach>  		
      	</delete>
      
-     
+     <!-- 模糊查询 -->
+     	<select id="mhselect" parameterType="String" resultType="evaluation.entity.Course">
+     		select * from course where coursename like '%${coursename}%'
+     	
+     	</select>
      
      	
      		 

@@ -4,7 +4,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="evaluation.dao.TeacherDao">
 
+
 <!-- 根据账号密码查询所有教师 -->
+
+ <resultMap id="teachertm" type="evaluation.entity.Teacher">
+      
+		<id property="teacherid" column="teacherid" />
+		<result property="name" column="name" />
+		<result property="sex" column="sex" />
+		<result property="teachernumber" column="teachernumber" />
+		<result property="phone" column="phone" />
+		<result property="password" column="password" />
+		<result property="power" column="power" />
+		<result property="majorid" column="majorid" />
+		<result property="remarks" column="remarks" />		
+		<result property="birthday" column="birthday" />
+		<association property="maj"
+			javaType="evaluation.entity.Major">
+			<id property="majorid" column="majorid" />
+			<result property="majornumber" column="majornumber" />
+			<result property="majorname" column="majorname" />
+			<result property="facultyid" column="facultyid" />
+		</association>
+		
+	</resultMap>
+
+ <select id="getTeachersmajor" resultMap="teachertm">
+      	select * from teacher,major where	teacher.majorid=major.majorid;
+      </select>
+
+
       <select id="getTeacher" parameterType="evaluation.entity.Teacher" resultType="evaluation.entity.Teacher">
 		select * from teacher where teachernumber=#{teachernumber} and password=#{password}
       </select>   
@@ -47,6 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		power=#{power},majorid=#{majorid} where teacherid=#{teacherid}
 	  </update>
      
+
 <!-- 根据多个id删除多个教师 -->
      	<delete id="delAllTeacher" parameterType="java.lang.String">
      		delete from teacher where teacherid in 
@@ -54,5 +84,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	            #{ids}
 	        </foreach>  		
      	</delete>
+
+ <!-- 模糊查询 -->
+     	<select id="mhselect" parameterType="String" resultType="evaluation.entity.Teacher">
+     		select * from teacher where name like '%${name}%'
+     	
+     	</select>      
+
 
 </mapper>

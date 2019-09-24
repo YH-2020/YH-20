@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
         <link rel="stylesheet" href="../X-admin/css/font.css">
         <link rel="stylesheet" href="../X-admin/css/xadmin.css">
-        <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+        <!--  <link rel="stylesheet" href="../X-admin/css/theme5.css"> -->
         <script src="../X-admin/lib/layui/layui.js" charset="utf-8"></script>
         <script type="text/javascript" src="../X-admin/js/xadmin.js"></script>
        
@@ -31,26 +31,22 @@
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-md12">
                     <div class="layui-card">
-                         <div class="layui-card-body ">
-                            <form class="layui-form layui-col-space5">
+                        <div class="layui-card-body ">
+                            <form class="layui-form layui-col-space5" action="${pageContext.request.contextPath}/course/mselect">
                                 <div class="layui-inline layui-show-xs-block">
-                                    <input class="layui-input"  autocomplete="off" placeholder="开始日" name="start" id="start">
+                                    <input id="mlike" type="text" name="coursename"  placeholder="请输入课程名" autocomplete="off" class="layui-input">
                                 </div>
                                 <div class="layui-inline layui-show-xs-block">
-                                    <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">
-                                </div>
-                                <div class="layui-inline layui-show-xs-block">
-                                    <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
-                                </div>
-                                <div class="layui-inline layui-show-xs-block">
-                                    <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                                    <button type="submit" class="layui-btn "  lay-submit=""   lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
                                 </div>
                             </form>
-                        </div> 
+                        </div>
                         <div class="layui-card-header">
                             <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                            <button class="layui-btn" onclick="xadmin.open('新增课程','${pageContext.request.contextPath}/course/course-add',600,400)"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn" onclick="xadmin.open('新增课程','${pageContext.request.contextPath}/course/course-add',600,400)"><i class="layui-icon"></i>添加</button>                             
+                        	
                         </div>
+                        
                         <div class="layui-card-body layui-table-body layui-table-main">
                             <table class="layui-table layui-form">
                                 <thead>
@@ -75,12 +71,12 @@
                                 		<td>${li.coursenumber }</td>
                                 		<td>${li.major.majorname }</td>
 										<td class="td-manage">
-										<button class="layui-btn layui-btn layui-btn-xs" 
+										<button class="layui-btn layui-btn layui-btn-sm " 
 										onclick="xadmin.open('编辑','${pageContext.request.contextPath}/course/course-update?courseid=${li.courseid }',600,400)"
 											href="javascript:;"> <i class="layui-icon">&#xe642;</i>修改
 										</button> 
 									
-										<button class="layui-btn-danger layui-btn layui-btn-xs"
+										<button class="layui-btn-danger layui-btn layui-btn-sm "
 												onclick="course_del(this,'${li.courseid }')" href="javascript:;">
 												<i class="layui-icon">&#xe640;</i>删除
 											</button>
@@ -165,7 +161,7 @@
       }
 
 
-
+	//批量删除
      function delAll (argument) {
         var ids = ""; 
 		
@@ -190,7 +186,7 @@
               	  data:{"ids":ids},
               	  success:function(data){
             		if(data.flag == 1){
-            			layer.alert("删除成功", {
+            			layer.alert("查询成功", {
                             icon: 1
                         },function(){
                         	xadmin.father_reload();
@@ -200,6 +196,33 @@
               })
         });
       } 
+     
+     //模糊查询
+     function selectm(){
+    	 var name = $("#mlike").val();
+    	 alert(name);
+    	 $.ajax({
+    		 type:"post",
+    		 url:"${pageContext.request.contextPath}/course/mselect",
+    		 data:{"coursename":name},
+    		 success:function(data){
+    			 if(data.flag == 1){
+         			layer.alert("查询成功", {
+                         icon: 1
+                     },function(){
+                     	xadmin.father_reload();
+                     });
+         		}else{
+         			layer.alert("查询失败", {
+                        icon: 1
+                    },function(){
+                    	xadmin.father_reload();
+                    });
+         		}
+    		 }
+    	 })
+     }
+     
     </script>
 
 </html>

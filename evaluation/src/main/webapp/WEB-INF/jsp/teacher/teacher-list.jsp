@@ -36,7 +36,7 @@
                 <div class="layui-col-md12">
                     <div class="layui-card">
                         <div class="layui-card-body ">
-                            <form class="layui-form layui-col-space5">
+                            <form class="layui-form layui-col-space5" action="${pageContext.request.contextPath}/teacher/mselect">
 <!--                                 <div class="layui-inline layui-show-xs-block"> -->
 <!--                                     <input class="layui-input"  autocomplete="off" placeholder="开始日" name="start" id="start"> -->
 <!--                                 </div> -->
@@ -44,16 +44,16 @@
 <!--                                     <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end"> -->
 <!--                                 </div> -->
                                 <div class="layui-inline layui-show-xs-block">
-                                    <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                    <input id="mlike" type="text" name="name"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
                                 </div>
-                                <div class="layui-inline layui-show-xs-block">
-                                    <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                                <div class="layui-inline layui-show-xs-block ">
+                                    <button class="layui-btn layui-btn-lg"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
                                 </div>
                             </form>
                         </div>
                         <div class="layui-card-header">
-                            <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                            <button class="layui-btn" onclick="xadmin.open('添加教师','add',600,400)"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn layui-btn-danger layui-btn-lg" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+                            <button class="layui-btn layui-btn-lg" onclick="xadmin.open('添加教师','add',600,400)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body layui-table-body layui-table-main">
                             <table class="layui-table layui-form">
@@ -87,19 +87,21 @@
                                     <td>${teacher.password}</td>
                                     <td>${teacher.phone}</td>
                                     <td>${teacher.birthday}</td>
-                                    <td>${teacher.majorid}</td>
+                                    <td>${teacher.maj.majorname}</td>
                                     <td>${teacher.power}</td>
-                                    <td>${teacher.remarks}</td>                                   
-                                    <td class="td-manage">    
-                                     <button class="layui-btn layui-btn layui-btn-xs"                                 
-                                        onclick="xadmin.open('编辑','update?teacherid=${teacher.teacherid}',600,400)" href="javascript:;">
-                                        <i class="layui-icon">&#xe642;</i>修改
+                                    <td>${teacher.remarks}</td>
+
+                                    <td class="td-manage">                                     
+                                      <button class="layui-btn layui-btn"  onclick="xadmin.open('编辑','update?teacherid=${teacher.teacherid}',600,400)" href="javascript:;">
+                                        <i class="layui-icon">&#xe642;</i>编辑
                                       </button>
-                                      
-                                      <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                       onclick="del('${teacher.teachernumber}')" href="javascript:;">
-                                       <i class="layui-icon">&#xe640;</i>删除
-                                     </button>
+                                      <button class="layui-btn-warm layui-btn"  onclick="xadmin.open('修改密码','member-password.html',600,400)" title="重置密码" href="javascript:;">
+                                        <i class="layui-icon">&#xe631;</i>重置密码
+                                      </button>
+                                      <button class="layui-btn-danger layui-btn" onclick="del('${teacher.teachernumber}')" href="javascript:;">
+                                        <i class="layui-icon">&#xe640;</i>删除
+                                      </button>
+
                                     </td>
                                   </tr> 
                                    </c:forEach>                                 
@@ -209,6 +211,32 @@
             	}            	  
               })
         });
-      }            
+      }  
+      
+    //模糊查询
+      function selectm(){
+     	 var name = $("#mlike").val();
+     	 alert(name);
+     	 $.ajax({
+     		 type:"post",
+     		 url:"${pageContext.request.contextPath}/teacher/mselect",
+     		 data:{"name":name},
+     		 success:function(data){
+     			 if(data.flag == 1){
+          			layer.alert("查询成功", {
+                          icon: 1
+                      },function(){
+                      	xadmin.father_reload();
+                      });
+          		}else{
+          			layer.alert("查询失败", {
+                         icon: 1
+                     },function(){
+                     	xadmin.father_reload();
+                     });
+          		}
+     		 }
+     	 })
+      }
     </script>
 </html>

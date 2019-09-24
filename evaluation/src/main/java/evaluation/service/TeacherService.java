@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import evaluation.dao.TeacherDao;
+import evaluation.entity.Course;
 import evaluation.entity.Teacher;
 
 import evaluation.util.Page;
@@ -18,7 +19,14 @@ public class TeacherService {
 	@Autowired
 	private TeacherDao teacherDao;
 	
+
 	//分页
+
+	public List<Teacher> getTeachersmajor(){
+		return teacherDao.getTeachersmajor();
+	}
+	
+
 	public List<Teacher> getTeachers(Page<Teacher> page){
 		return teacherDao.getTeachers(page);
 	}
@@ -78,6 +86,13 @@ public class TeacherService {
 	public int delAllTeacher(String[] ids) {
 		return teacherDao.delAllTeacher(ids);
 	}
+	
+	//模糊查询
+		public List<Teacher> mhselect(String name){
+			List<Teacher> list = teacherDao.mhselect(name);
+			return list;
+			
+		}
 
 }
 

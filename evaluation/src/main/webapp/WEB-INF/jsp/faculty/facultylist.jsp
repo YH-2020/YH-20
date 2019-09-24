@@ -49,24 +49,18 @@ function del(facultyid){
                 <div class="layui-col-md12">
                     <div class="layui-card">
                         <div class="layui-card-body ">
-                            <form class="layui-form layui-col-space5">
+                           <form class="layui-form layui-col-space5" action="${pageContext.request.contextPath}/faculty/mselect">
                                 <div class="layui-inline layui-show-xs-block">
-                                    <input class="layui-input"  autocomplete="off" placeholder="开始日" name="start" id="start">
+                                    <input type="text" id="mlike" name="facultyname" value=""  placeholder="请输入院系名" autocomplete="off" class="layui-input">
                                 </div>
                                 <div class="layui-inline layui-show-xs-block">
-                                    <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">
-                                </div>
-                                <div class="layui-inline layui-show-xs-block">
-                                    <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
-                                </div>
-                                <div class="layui-inline layui-show-xs-block">
-                                    <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                                    <button type="submit" class="layui-btn layui-btn-lg"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
                                 </div>
                             </form>
                         </div>
                         <div class="layui-card-header">
-                            <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                            <button class="layui-btn" onclick="xadmin.open('新增学院','${pageContext.request.contextPath}/faculty/addfaculty',600,400)"><i class="layui-icon"></i>添加</button>
+                            <button class="layui-btn layui-btn-danger layui-btn-lg" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+                            <button class="layui-btn layui-btn-lg"  onclick="xadmin.open('新增学院','${pageContext.request.contextPath}/faculty/addfaculty',600,400)"><i class="layui-icon"></i>添加</button>
                         </div>
                         <div class="layui-card-body ">
                             <table class="layui-table layui-form">
@@ -95,14 +89,17 @@ function del(facultyid){
                                
                                  
                                   <td class="td-manage">
-                                  <button class="layui-btn layui-btn layui-btn-xs" 
+
+                                  <button class="layui-btn layui-btn layui-btn" 
                                        onclick="xadmin.open('编辑信息','${pageContext.request.contextPath}/faculty/update?facultyid=${item.facultyid}',600,400)" href="javascript:;">
                                        <i class="layui-icon">&#xe642;</i>修改
                                       </button>
-                                      <button class="layui-btn-danger layui-btn layui-btn-xs"
+                                      <button class="layui-btn-danger layui-btn layui-btn"
                                      onclick="del('${item.facultyid}')" href="javascript:;">
                                      <i class="layui-icon">&#xe640;</i>删除
                                    </button>
+
+                                    
                                   </td>
                                    
                                 </tr>
@@ -191,6 +188,31 @@ function del(facultyid){
               
           });
         }
+      //模糊查询
+      function selectm(){
+     	 var name = $("#mlike").val();
+     	 alert(name);
+     	 $.ajax({
+     		 type:"post",
+     		 url:"${pageContext.request.contextPath}/faculty/mselect",
+     		 data:{"facultyname":name},
+     		 success:function(data){
+     			 if(data.flag == 1){
+          			layer.alert("查询成功", {
+                          icon: 1
+                      },function(){
+                      	xadmin.father_reload();
+                      });
+          		}else{
+          			layer.alert("查询失败", {
+                         icon: 1
+                     },function(){
+                     	xadmin.father_reload();
+                     });
+          		}
+     		 }
+     	 })
+      }
 
   </script>
     

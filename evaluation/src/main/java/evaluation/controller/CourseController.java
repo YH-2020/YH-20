@@ -97,6 +97,19 @@ public class CourseController {
 		}
 	}
 	
+	//模糊查询
+	@RequestMapping("mselect")
+	public ModelAndView mselect(String coursename) {
+		List<Course> list = courseService.mhselect(coursename);
+		/*for(Course course : list) {
+			System.out.println(course.getCourseid());
+		}*/
+			
+		
+		ModelAndView mv = new ModelAndView("course/course-list");
+		mv.addObject("list",list);
+		return mv;
+	}
 	
 	
 	
