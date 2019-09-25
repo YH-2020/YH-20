@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import evaluation.entity.Course;
 import evaluation.entity.ResultMsg;
 
 import evaluation.entity.Teacher;
 import evaluation.service.TeacherService;
-import evaluation.util.Page;
 
 @Controller
 @RequestMapping("/teacher")
@@ -24,25 +22,28 @@ public class TeacherController {
 	@Autowired
 	private TeacherService teacherService;
 	
-	//教师列表	
-	
-	
-	 
-	//删除
+	//教师列表
+	@RequestMapping("/teacher-list")
+	 public ModelAndView index() {
+		List<Teacher> teachers=teacherService.getTeachers();
+		 ModelAndView mv=new ModelAndView("teacher/teacher-list");
+		 mv.addObject("teachers", teachers);
+		 return mv;
+	 }
+		
 	@RequestMapping("/delete")
 	 public ModelAndView delete(String teachernumber) {
 		 teacherService.delTeacher(teachernumber);
 		 ModelAndView mv=new ModelAndView("teacher/teacher-list");
 		 return mv;
 	 }
-	
+
 	//新增页面
 	@RequestMapping("/add")
 	 public ModelAndView add() {
 		 ModelAndView mv=new ModelAndView("teacher/add");
 		 return mv;
 	 }
-	
 	//新增提交
 	@RequestMapping("/add-submit")
 	 public ResultMsg add_submit(Teacher teacher) {
@@ -55,7 +56,7 @@ public class TeacherController {
 			}
 			return new ResultMsg(0,"添加失败");
 		}
-	
+
 	//修改页面
 	@RequestMapping("/update")
 	 public ModelAndView update(int teacherid) {
@@ -80,6 +81,7 @@ public class TeacherController {
 	
 
 
+
 	//登录页面   
 	@RequestMapping("/teacherlist")
 	public ModelAndView studentlist() {
@@ -89,12 +91,12 @@ public class TeacherController {
 		return mv;
 	}
         
-
 	 @RequestMapping("/login")
      public ModelAndView login() {
     	 ModelAndView mv=new ModelAndView("teacher/login");
     	 return mv;
 }
+
 	 
 	 //登录判断
 	 @RequestMapping("/managerlogin")
@@ -129,12 +131,7 @@ public class TeacherController {
 		//模糊查询
 		@RequestMapping("mselect")
 		public ModelAndView mselect(String name) {
-			List<Teacher> list = teacherService.mhselect(name);
-			/*for(Course course : list) {
-				System.out.println(course.getCourseid());
-			}*/
-				
-			
+			List<Teacher> list = teacherService.mhselect(name);							
 			ModelAndView mv = new ModelAndView("teacher/teacher-list");
 			mv.addObject("teachers",list);
 			return mv;
