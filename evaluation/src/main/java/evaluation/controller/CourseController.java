@@ -1,9 +1,8 @@
 package evaluation.controller;
 
 import java.io.InputStream;
-import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -93,7 +92,7 @@ public class CourseController {
 	@RequestMapping("byincourse")
 	@ResponseBody
 	public ResultMsg byincourse(String ids) {
-		System.out.println(ids);
+		//System.out.println(ids);
 		String[] courseids = ids.split(",");
 		int i = courseService.byincourse(courseids);
 		if(i>0) {

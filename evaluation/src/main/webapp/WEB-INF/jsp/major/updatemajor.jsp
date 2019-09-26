@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
         <meta charset="UTF-8">
-        <title>添加专业</title>
+        <title>修改专业</title>
         <meta name="renderer" content="webkit">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -20,6 +20,7 @@
         <![endif]-->
     </head>
     <body>
+    
         <div class="layui-fluid">
             <div class="layui-row">
                 <form class="layui-form">
@@ -27,20 +28,20 @@
                         <label for="L_majorid" class="layui-form-label">
                             <span class="x-red">*</span>ID</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="L_majorid" name="majorid" required="" lay-verify="majorid" autocomplete="off" class="layui-input"></div>
+                            <input type="text" id="L_majorid" name="majorid" required="" lay-verify="majorid" value=" ${major.majorid}" autocomplete="off" class="layui-input" readonly="readonly"></div>
                         <div class="layui-form-mid layui-word-aux">
                             <span class="x-red">*</span>唯一的ID</div></div>
                     <div class="layui-form-item">
                         <label for="L_majornumber" class="layui-form-label">
                             <span class="x-red">*</span>专业编号</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="L_majornumber" name="majornumber" required="" lay-verify="majornumber" autocomplete="off" class="layui-input"></div>
+                            <input type="text" id="L_majornumber" name="majornumber" required="" lay-verify="majornumber" value=" ${major.majornumber}" autocomplete="off" class="layui-input"></div>
                     </div>
                     <div class="layui-form-item">
                         <label for="L_majorname" class="layui-form-label">
                             <span class="x-red">*</span>专业名称</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="L_majorname" name="majorname" required="" lay-verify="majorname" autocomplete="off" class="layui-input"></div>
+                            <input type="text" id="L_majorname" name="majorname" required="" lay-verify="majorname" value=" ${major.majorname}" autocomplete="off" class="layui-input"></div>
                     </div>
                     
                     <div class="layui-form-item">
@@ -54,30 +55,38 @@
 		                   </select>
 		                  </div>
 		                   </div>
-<!--                         <label for="L_facultyid" class="layui-form-label"> -->
-<!--                             <span class="x-red">*</span>院系</label> -->
-<!--                         <div class="layui-input-inline"> -->
-<!--                             <input type="text" id="L_facultyid" name="facultyid" required="" lay-verify="facultyid" autocomplete="off" class="layui-input"></div> -->
-                    </div>
+                    
+
                     
                     <div class="layui-form-item">
                         <label for="L_repass" class="layui-form-label"></label>
-                        <button class="layui-btn" lay-filter="add" lay-submit="" onclick="add()">增加</button></div>
+                        <button class="layui-btn" lay-filter="add" lay-submit="" onclick="update()">保存</button></div>
                 </form>
             </div>
         </div>
-        
+         
          <script>
-        function add(){
-        	var url="${pageContext.request.contextPath}/manager/addmajor_submit";
-        	var param=$(".layui-form").serialize();
-        	$.post(
-        			url,param,function(data){
-        				alert(data.msg);
-        				if(data.flag==1){
-        					location.href="${pageContext.request.contextPath}/manager/majorlist";
-        				}
-        			});
+//         function add(){
+//         	var url="${pageContext.request.contextPath}/major/addmajor_submit";
+//         	var param=$(".layui-form").serialize();
+//         	$.post(
+//         			url,param,function(data){
+//         				alert(data.msg);
+//         				if(data.flag==1){
+//         					location.href="${pageContext.request.contextPath}/major/majorlist";
+//         				}
+//         			});
+//         }
+        /*修改提交*/
+        function update(){
+        	var url="${pageContext.request.contextPath}/major/updatemajor_submit";
+        	var param = $(".layui-form").serialize();
+        	$.post(url, param, function(data) {
+        		alert(data.msg);
+        		if(data.flag==1){
+        			location.href="${pageContext.request.contextPath}/major/majorlist";
+        		}
+        	});
         }
         </script>
         
@@ -107,7 +116,7 @@
                 function(data) {
                     console.log(data);
                     //发异步，把数据提交给php
-                    layer.alert("增加成功", {
+                    layer.alert("修改成功", {
                         icon: 6
                     },
                     function() {
